@@ -1,0 +1,38 @@
+# GANTI username dan repository GitHub sebelum login admin.
+# GitHub memerlukan OAuth proxy tambahan; lihat PANDUAN-SETUP.md.
+backend:
+  name: github
+  repo: GANTI_USERNAME/portfolio-website
+  branch: main
+  base_url: https://GANTI_OAUTH_WORKER.workers.dev
+  auth_endpoint: auth
+
+media_folder: images
+public_folder: /images
+publish: true
+
+collections:
+  - name: portfolio
+    label: Portfolio
+    files:
+      - name: projects
+        label: Kelola Projects
+        file: content/projects.json
+        format: json
+        fields:
+          - label: Daftar Project
+            name: projects
+            widget: list
+            summary: '{{fields.title}} — {{fields.year}}'
+            collapsed: true
+            fields:
+              - {label: Judul Project, name: title, widget: string}
+              - {label: Kategori, name: cat, widget: string}
+              - {label: Tahun, name: year, widget: string}
+              - {label: Perusahaan / Brand, name: company, widget: string}
+              - {label: Deskripsi / Case Study, name: desc, widget: text}
+              - label: Galeri Gambar
+                name: images
+                widget: list
+                field: {label: Gambar, name: image, widget: image}
+              - {label: Tampilkan di Website, name: published, widget: boolean, default: true, required: false}
