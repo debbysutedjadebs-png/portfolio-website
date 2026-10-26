@@ -48,21 +48,21 @@
   }
   img { max-width: 100%; display: block; }
   a { color: inherit; }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(24px, 3vw, 48px); }
   em { font-style: normal; }
 
   /* ---------- Dark hero ---------- */
   .hero-dark { background: var(--dark-bg); color: var(--on-dark); position: relative; overflow: hidden; padding-bottom: 0; }
-  .hero-dark .wrap { max-width: 900px; }
-  header.top { display: flex; align-items: center; justify-content: space-between; padding: 26px 28px; max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+  .hero-dark .wrap { max-width: 1280px; }
+  header.top { display: flex; align-items: center; justify-content: space-between; padding: 26px clamp(24px, 3vw, 48px); max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
   .mark { font-family: var(--font-display); font-weight: 500; font-size: 15px; letter-spacing: 0.01em; color: var(--on-dark); }
   nav.top { display: flex; gap: 26px; }
   nav.top a { text-decoration: none; font-size: 13px; color: rgba(241,241,234,0.75); transition: color .15s ease; font-family: var(--font-mono); }
   nav.top a:hover { color: var(--on-dark); }
 
   /* Editorial layout A: centered page grid, left-aligned content */
-  .hero-dark .wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: clamp(24px, 5vw, 64px); }
-  .hero-dark header.top { width: 100%; max-width: 1120px; padding-inline: clamp(24px, 5vw, 64px); }
+  .hero-dark .wrap { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: clamp(24px, 3vw, 48px); }
+  .hero-dark header.top { width: 100%; max-width: 1280px; padding-inline: clamp(24px, 3vw, 48px); }
   .hero-body { padding: clamp(56px, 7vw, 94px) 0 clamp(66px, 8vw, 100px); position: relative; z-index: 2; text-align: left; }
   .hero-top { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
   .avatar-wrap { width: 46px; height: 46px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(241,241,234,0.25); }
@@ -72,12 +72,12 @@
 
   .hero-dark h1 {
     font-family: var(--font-display); font-weight: 500;
-    font-size: clamp(32px, 4.5vw, 54px);
+    font-size: clamp(48px, 5.8vw, 88px);
     line-height: 1.13; margin: 0 0 36px; letter-spacing: -0.018em;
-    max-width: 920px; overflow-wrap: break-word; text-wrap: balance;
+    max-width: 1120px; overflow-wrap: break-word; text-wrap: balance;
   }
   .hero-dark h1 i {
-    display: block; margin-top: 0.12em; max-width: 920px;
+    display: block; margin-top: 0.12em; max-width: 1120px;
     font-family: var(--font-serif); font-style: italic;
     color: var(--accent); font-weight: 400; font-size: 0.98em;
     line-height: 1.16; text-wrap: pretty;
@@ -118,14 +118,14 @@
     padding: 26px 0; border-bottom: 1px solid var(--line); cursor: pointer; position: relative;
   }
   .row .num { font-family: var(--font-mono); font-size: 13px; color: var(--body-faint); }
-  .row .title { font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 3vw, 27px); transition: color .15s ease, transform .15s ease; }
+  .row .title { font-family: var(--font-display); font-weight: 500; font-size: clamp(28px, 3.4vw, 44px); transition: color .15s ease, transform .15s ease; }
   .row:hover .title { color: var(--accent); transform: translateX(4px); }
   .row .cat { font-size: 12px; color: var(--body-faint); white-space: nowrap; font-family: var(--font-mono); }
   .row .year { font-family: var(--font-mono); font-size: 12px; color: var(--body-faint); white-space: nowrap; }
   @media (max-width: 620px) { .row { grid-template-columns: 24px 1fr; row-gap: 6px; } .row .cat, .row .year { grid-column: 2; display: inline-block; margin-right: 12px; } }
 
   .portfolio-tools { display:flex; align-items:center; gap:12px; margin:0 0 22px; flex-wrap:wrap; }
-  .portfolio-tools input,.portfolio-tools select { background:var(--paper);border:1px solid var(--line); color:var(--text); padding:12px 13px; border-radius:3px; font:13px var(--font-body); min-width:180px; }
+  .portfolio-tools input,.portfolio-tools select { background:var(--paper);border:1px solid var(--line); color:var(--text); padding:14px 15px; border-radius:4px; font:15px var(--font-body); min-width:180px; }
   .portfolio-tools input { flex:1; min-width:210px; }
   .portfolio-tools #projectCount {font:12px var(--font-mono);color:var(--body-soft);margin-left:auto;}
   .row:focus-visible, .portfolio-tools :focus-visible, .modal-close:focus-visible {outline:3px solid var(--accent);outline-offset:3px;}
