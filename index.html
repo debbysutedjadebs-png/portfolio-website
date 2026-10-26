@@ -107,6 +107,13 @@
   .row .year { font-family: var(--font-mono); font-size: 12px; color: var(--body-faint); white-space: nowrap; }
   @media (max-width: 620px) { .row { grid-template-columns: 24px 1fr; row-gap: 6px; } .row .cat, .row .year { grid-column: 2; display: inline-block; margin-right: 12px; } }
 
+  .portfolio-tools { display:flex; align-items:center; gap:12px; margin:0 0 22px; flex-wrap:wrap; }
+  .portfolio-tools input,.portfolio-tools select { background:var(--paper);border:1px solid var(--line); color:var(--text); padding:12px 13px; border-radius:3px; font:13px var(--font-body); min-width:180px; }
+  .portfolio-tools input { flex:1; min-width:210px; }
+  .portfolio-tools #projectCount {font:12px var(--font-mono);color:var(--body-soft);margin-left:auto;}
+  .row:focus-visible, .portfolio-tools :focus-visible, .modal-close:focus-visible {outline:3px solid var(--accent);outline-offset:3px;}
+  @media(max-width:620px){.portfolio-tools input,.portfolio-tools select{width:100%;}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none!important}html{scroll-behavior:auto}}
   /* Floating hover preview (desktop only) */
   .hover-preview {
     position: fixed; top: 0; left: 0; width: 220px; height: 150px; border-radius: 8px; overflow: hidden;
@@ -165,7 +172,7 @@
 
 <div class="hero-dark">
   <header class="top">
-    <div class="mark">Deby Suteja</div>
+    <div class="mark" data-site="site_name">Deby Suteja</div>
     <nav class="top">
       <a href="#work">Work</a>
       <a href="#about">About</a>
@@ -176,14 +183,14 @@
   <div class="wrap">
     <div class="hero-body">
       <div class="hero-top">
-        <div class="avatar-wrap"><img src="images/foto-profil.jpg" alt="Deby Suteja"></div>
-        <div class="who">Halo, saya <strong>Deby</strong> — Graphic Design Manager, Jakarta</div>
+        <div class="avatar-wrap"><img src="images/foto-profil.jpg" data-site-image="profile_image" alt="Deby Suteja"></div>
+        <div class="who"><span data-site="greeting">Halo, saya</span> <strong data-site="display_name">Deby</strong> — <span data-site="job_location">Graphic Design Manager, Jakarta</span></div>
       </div>
-      <h1>Creative strategy &amp; brand direction, <i>diterjemahkan jadi visual yang bekerja di rak.</i></h1>
+      <h1><span data-site="hero_headline">Creative strategy &amp; brand direction,</span> <i data-site="hero_highlight">diterjemahkan jadi visual yang bekerja di rak.</i></h1>
       <div class="hero-meta">
-        <span>Saat ini di <b>PT Kapal Api Global</b></span>
-        <span><b>10+ tahun</b> pengalaman</span>
-        <span>Fokus: <b>Packaging · POSM · Campaign</b></span>
+        <span>Saat ini di <b data-site="current_company">PT Kapal Api Global</b></span>
+        <span><b data-site="experience_summary">10+ tahun</b> pengalaman</span>
+        <span>Fokus: <b data-site="specialties">Packaging · POSM · Campaign</b></span>
       </div>
     </div>
   </div>
@@ -196,15 +203,20 @@
 <div class="wrap">
 
   <section id="work" style="border-top:none;">
-    <div class="section-head"><span class="idx">00</span><h2>Selected Work</h2></div>
-    <div class="shelf" id="shelf"></div>
+    <div class="section-head"><span class="idx">00</span><h2 data-site="work_heading">Selected Work</h2></div>
+    <div class="portfolio-tools" aria-label="Filter portfolio">
+      <input id="projectSearch" type="search" placeholder="Search projects, brands, or keywords..." aria-label="Search projects" autocomplete="off">
+      <select id="projectCategory" aria-label="Filter by category"><option value="">All categories</option></select>
+      <span id="projectCount" role="status" aria-live="polite"></span>
+    </div>
+    <div class="shelf" id="shelf" aria-live="polite"></div>
   </section>
 
   <section id="about">
-    <div class="section-head"><span class="idx">01</span><h2>About</h2></div>
-    <p class="about-lede">Creative professional with <i>10+ years</i> of experience in visual communication and creative design, including 4+ years focused on FMCG/CPG campaign assets, POSM, packaging support, and brand communication — menerjemahkan objektif marketing jadi creative direction, campaign concept, dan visual system yang konsisten lintas retail, packaging, POSM, dan digital.</p>
+    <div class="section-head"><span class="idx">01</span><h2 data-site="about_heading">About</h2></div>
+    <p class="about-lede" data-site="about_intro">Creative professional with 10+ years of experience in visual communication and creative design, including 4+ years focused on FMCG/CPG campaign assets, POSM, packaging support, and brand communication — menerjemahkan objektif marketing jadi creative direction, campaign concept, dan visual system yang konsisten lintas retail, packaging, POSM, dan digital.</p>
 
-    <div class="exp-list">
+    <div class="exp-list" id="siteExperience">
       <div class="exp-item">
         <div class="when">Jan 2026<br>Present</div>
         <div>
@@ -239,7 +251,7 @@
       </div>
     </div>
 
-    <div class="skills">
+    <div class="skills" id="siteSkills">
       <span class="skill-tag">Packaging Design</span>
       <span class="skill-tag">Creative Strategy</span>
       <span class="skill-tag">Brand Campaign Direction</span>
@@ -261,25 +273,25 @@
 
 <footer class="dark" id="contact">
   <div class="wrap">
-    <h2>Ngobrol soal <i>project?</i></h2>
-    <p class="sub">Jakarta, Indonesia</p>
+    <h2><span data-site="contact_heading">Ngobrol soal</span> <i data-site="contact_highlight">project?</i></h2>
+    <p class="sub" data-site="contact_location">Jakarta, Indonesia</p>
     <div class="links">
-      <a href="https://www.linkedin.com/in/debysuteja/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.behance.net/debbysutedja" target="_blank" rel="noopener">Behance</a>
-      <a href="https://www.instagram.com/debysuteja/" target="_blank" rel="noopener">Instagram</a>
+      <a data-site-href="linkedin" href="https://www.linkedin.com/in/debysuteja/" target="_blank" rel="noopener">LinkedIn</a>
+      <a data-site-href="behance" href="https://www.behance.net/debbysutedja" target="_blank" rel="noopener">Behance</a>
+      <a data-site-href="instagram" href="https://www.instagram.com/debysuteja/" target="_blank" rel="noopener">Instagram</a>
     </div>
-    <p class="fine">© Deby Suteja</p>
+    <p class="fine">© <span data-site="site_name">Deby Suteja</span></p>
   </div>
 </footer>
 
 <div class="hover-preview" id="hoverPreview"><img id="hoverPreviewImg" src="" alt=""></div>
 
-<div class="overlay" id="overlay">
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
   <div class="modal" id="modal">
     <div class="modal-cover">
       <div class="modal-gallery" id="modalGallery"></div>
       <span class="gallery-count" id="galleryCount"></span>
-      <button class="modal-close" id="modalClose">&times;</button>
+      <button class="modal-close" id="modalClose" aria-label="Close project details">&times;</button>
     </div>
     <div class="modal-body">
       <div class="cat-row"><span id="modalCat"></span><span class="dot">·</span><span id="modalYear"></span></div>
@@ -291,6 +303,51 @@
 </div>
 
 <script>
+  // Text and profile settings are managed from /admin → Website Content.
+  async function loadSiteContent() {
+    try {
+      const response = await fetch('/content/site.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const settings = await response.json();
+      if (!settings || typeof settings !== 'object') return;
+      document.querySelectorAll('[data-site]').forEach(el => {
+        const key = el.getAttribute('data-site');
+        if (typeof settings[key] === 'string') el.textContent = settings[key];
+      });
+      if (typeof settings.page_title === 'string') document.title = settings.page_title;
+      document.querySelectorAll('[data-site-href]').forEach(el => {
+        const val = settings[el.getAttribute('data-site-href')];
+        if (typeof val === 'string' && /^https:\/\//i.test(val)) el.href = val;
+      });
+      document.querySelectorAll('[data-site-image]').forEach(el => {
+        const val = settings[el.getAttribute('data-site-image')];
+        if (typeof val === 'string' && (/^\/(?!\/)/.test(val) || /^https:\/\//i.test(val))) el.src = val;
+      });
+      if (Array.isArray(settings.experience)) {
+        const list = document.getElementById('siteExperience');
+        list.replaceChildren();
+        settings.experience.forEach(item => {
+          if (!item || typeof item !== 'object') return;
+          const outer = document.createElement('div'); outer.className = 'exp-item';
+          const when = document.createElement('div'); when.className = 'when'; when.textContent = item.period || '';
+          const body = document.createElement('div');
+          const role = document.createElement('div'); role.className = 'role2'; role.textContent = item.role || '';
+          const co = document.createElement('div'); co.className = 'co'; co.textContent = item.company || '';
+          const desc = document.createElement('p'); desc.textContent = item.description || '';
+          body.append(role, co, desc); outer.append(when, body); list.append(outer);
+        });
+      }
+      if (Array.isArray(settings.skills)) {
+        const list = document.getElementById('siteSkills'); list.replaceChildren();
+        settings.skills.forEach(skill => {
+          if (typeof skill !== 'string') return;
+          const el = document.createElement('span'); el.className = 'skill-tag'; el.textContent = skill; list.append(el);
+        });
+      }
+    } catch (error) { console.warn('Website text settings unavailable; using built-in defaults', error); }
+  }
+  loadSiteContent();
+
   // Project content is managed from /admin and stored in /content/projects.json.
   let projects = [];
 
@@ -310,47 +367,55 @@
   const hoverPreviewImg = document.getElementById("hoverPreviewImg");
   const canHover = window.matchMedia("(hover: hover)").matches;
 
+  const projectSearch = document.getElementById('projectSearch');
+  const projectCategory = document.getElementById('projectCategory');
+  const projectCount = document.getElementById('projectCount');
+  const escapeHtml = (value) => String(value ?? '');
+  const imagePath = (path) => {
+    if (!path || typeof path !== 'string') return '';
+    // Relative paths are resolved from the website root; absolute and remote media remain valid.
+    if (/^(https?:|data:|blob:)/i.test(path)) return path;
+    return '/' + path.replace(/^\/+/, '');
+  };
   async function loadProjects() {
     try {
-      const response = await fetch('/content/projects.json', {cache: 'no-cache'});
+      const response = await fetch('/content/projects.json', {cache:'no-store'});
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const data = await response.json();
-      projects = Array.isArray(data.projects) ? data.projects.filter(p => p.published !== false) : [];
+      projects = Array.isArray(data.projects) ? data.projects.filter(p => p && p.published !== false) : [];
+      const cats = [...new Set(projects.map(p => String(p.cat || '').trim()).filter(Boolean))].sort();
+      cats.forEach(cat => { const option = document.createElement('option');option.value = cat;option.textContent = cat;projectCategory.appendChild(option); });
       renderProjects();
     } catch (error) {
       console.error('Unable to load portfolio projects:', error);
-      shelf.textContent = 'Project belum dapat dimuat. Silakan refresh halaman.';
+      shelf.textContent = 'Projects could not be loaded. Please refresh or check content/projects.json.';
+      projectCount.textContent = 'Unavailable';
     }
   }
   function renderProjects() {
-    shelf.innerHTML = '';
-    projects.forEach((p, i) => {
-    const row = document.createElement("div");
-    row.className = "row";
-    for (const [className, value] of [
-      ['num', String(i + 1).padStart(2, '0')],
-      ['title', p.title || 'Untitled Project'],
-      ['cat', p.cat || ''],
-      ['year', p.year || '']
-    ]) {
-      const cell = document.createElement('div');
-      cell.className = className;
-      cell.textContent = value;
-      row.appendChild(cell);
-    }
-    row.addEventListener("click", () => openModal(i));
-    if (canHover) {
-      row.addEventListener("mouseenter", () => {
-        if (p.images && p.images.length) {
-          hoverPreviewImg.src = p.images[0];
-          hoverPreview.classList.add("show");
-        }
-      });
-      row.addEventListener("mouseleave", () => hoverPreview.classList.remove("show"));
-    }
-    shelf.appendChild(row);
+    shelf.replaceChildren();
+    const search = projectSearch.value.trim().toLocaleLowerCase();
+    const cat = projectCategory.value;
+    const filtered = projects.map((p,i) => ({p,i})).filter(({p}) =>
+      (!cat || p.cat === cat) && (!search || [p.title,p.cat,p.year,p.company,p.desc].some(v => String(v || '').toLocaleLowerCase().includes(search)))
+    );
+    projectCount.textContent = `${filtered.length} / ${projects.length} projects`;
+    if (!filtered.length) { const empty=document.createElement('p');empty.textContent='No matching projects. Try another keyword or category.';shelf.appendChild(empty);return; }
+    filtered.forEach(({p,i}, visibleIndex) => {
+      const row = document.createElement('div');
+      row.className = 'row';row.tabIndex = 0;row.setAttribute('role','button');
+      row.setAttribute('aria-label',`View ${p.title || 'project'} details`);
+      for (const [className,value] of [['num',String(visibleIndex+1).padStart(2,'0')],['title',p.title || 'Untitled Project'],['cat',p.cat || ''],['year',p.year || '']]) {
+        const cell=document.createElement('div');cell.className=className;cell.textContent=value;row.appendChild(cell);
+      }
+      row.addEventListener('click',()=>openModal(i));
+      row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(i);}});
+      if(canHover){row.addEventListener('mouseenter',()=>{if(p.images?.length){hoverPreviewImg.src=imagePath(p.images[0]);hoverPreview.classList.add('show');}});row.addEventListener('mouseleave',()=>hoverPreview.classList.remove('show'));}
+      shelf.appendChild(row);
     });
   }
+  projectSearch.addEventListener('input', renderProjects);
+  projectCategory.addEventListener('change', renderProjects);
   loadProjects();
 
   if (canHover) {
@@ -364,14 +429,19 @@
   const galleryEl = document.getElementById("modalGallery");
   const countEl = document.getElementById("galleryCount");
   let currentCount = 1;
+  let previouslyFocused = null;
 
   function openModal(i) {
     const p = projects[i];
+    if (!p) return;
+    previouslyFocused = document.activeElement;
     hoverPreview.classList.remove("show");
     galleryEl.innerHTML = "";
-    (p.images || []).forEach(b64 => {
+    (p.images || []).forEach((src, index) => {
       const im = document.createElement("img");
-      im.src = b64;
+      im.src = imagePath(src);
+      im.alt = `${p.title || "Project"} — image ${index + 1}`;
+      im.loading = index ? "lazy" : "eager";
       galleryEl.appendChild(im);
     });
     galleryEl.scrollLeft = 0;
@@ -384,6 +454,8 @@
     document.getElementById("modalCo").textContent = p.company;
     document.getElementById("modalDesc").textContent = p.desc;
     overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.getElementById("modalClose").focus();
     document.body.style.overflow = "hidden";
   }
   galleryEl.addEventListener("scroll", () => {
@@ -393,11 +465,19 @@
   });
   function closeModal() {
     overlay.classList.remove("open");
+    overlay.setAttribute("aria-hidden", "true");
+    if(previouslyFocused?.isConnected) previouslyFocused.focus();
     document.body.style.overflow = "";
   }
   document.getElementById("modalClose").addEventListener("click", closeModal);
   overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains('open')) closeModal();
+    if (e.key === "Tab" && overlay.classList.contains('open')) {
+      // Keep keyboard focus in the dialog until it closes.
+      e.preventDefault();document.getElementById('modalClose').focus();
+    }
+  });
 </script>
 
 </body>
