@@ -1,18 +1,16 @@
 {
+  "skills": [
+    "Packaging Design",
+    "Creative Strategy",
+    "Brand Campaign Direction",
+    "POSM & Retail Activation",
+    "Brand Communication"
+  ],
   "site_name": "Deby Suteja",
-  "page_title": "Deby Suteja — Creative Strategy & Brand Design",
-  "greeting": "Halo, saya",
-  "display_name": "Deby",
-  "job_location": "Graphic Design Manager, Jakarta",
-  "hero_headline": "Creative strategy & brand direction,",
-  "hero_highlight": "diterjemahkan jadi visual yang bekerja di rak.",
-  "current_company": "PT Kapal Api Global",
-  "experience_summary": "10+ tahun",
-  "specialties": "Packaging · POSM · Campaign",
-  "work_heading": "Selected Work",
-  "about_heading": "About",
-  "about_intro": "Creative professional with 10+ years of experience in visual communication and creative design, including 4+ years focused on FMCG/CPG campaign assets, POSM, packaging support, and brand communication — menerjemahkan objektif marketing jadi creative direction, campaign concept, dan visual system yang konsisten lintas retail, packaging, POSM, dan digital.",
+  "contact_heading": "Ngobrol soal",
   "profile_image": "/images/foto-profil.jpg",
+  "page_title": "Deby Suteja — Creative Strategy & Brand Design",
+  "display_name": "Deby",
   "experience": [
     {
       "period": "Jan 2026 – Present",
@@ -39,17 +37,19 @@
       "description": "Mendukung branding, promotional design, layout development, internal communication material, dan production-ready creative asset."
     }
   ],
-  "skills": [
-    "Packaging Design",
-    "Creative Strategy",
-    "Brand Campaign Direction",
-    "POSM & Retail Activation",
-    "Brand Communication"
-  ],
-  "contact_heading": "Ngobrol soal",
-  "contact_highlight": "project?",
+  "hero_highlight": "Leading creative vision, shaping brand identities, and transforming strategic thinking into impactful visual experiences.",
+  "about_heading": "About",
+  "experience_summary": "10+ tahun",
+  "instagram": "https://www.instagram.com/debysuteja/",
   "contact_location": "Jakarta, Indonesia",
-  "linkedin": "https://www.linkedin.com/in/debysuteja/",
+  "work_heading": "Selected Work",
   "behance": "https://www.behance.net/debbysutedja",
-  "instagram": "https://www.instagram.com/debysuteja/"
+  "contact_highlight": "project?",
+  "job_location": "Graphic Design Manager, Jakarta",
+  "current_company": "PT Kapal Api Global",
+  "greeting": "Hello, I'm",
+  "hero_headline": "Creative strategy & brand direction,",
+  "about_intro": "Creative professional with 10+ years of experience in visual communication and creative design, including 4+ years focused on FMCG/CPG campaign assets, POSM, packaging support, and brand communication — menerjemahkan objektif marketing jadi creative direction, campaign concept, dan visual system yang konsisten lintas retail, packaging, POSM, dan digital.",
+  "specialties": "Packaging · POSM · Campaign",
+  "linkedin": "https://www.linkedin.com/in/debysuteja/"
 }
