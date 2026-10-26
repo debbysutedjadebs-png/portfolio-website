@@ -93,3 +93,29 @@ collections:
                 widget: list
                 field: {label: Gambar, name: image, widget: image}
               - {label: Tampilkan di Website, name: published, widget: boolean, default: true, required: false}
+
+  - name: featured
+    label: Featured Creative Works
+    files:
+      - name: featured_gallery
+        label: Clickable Visual Covers & Galleries
+        file: content/featured.json
+        format: json
+        fields:
+          - label: Featured Creative Categories
+            name: features
+            widget: list
+            summary: '{{fields.title}}'
+            collapsed: true
+            fields:
+              - {label: Category Title, name: title, widget: string}
+              - {label: Subtitle, name: subtitle, widget: string, required: false}
+              - {label: Cover Image, name: cover, widget: image, required: false}
+              - {label: Introduction, name: description, widget: text, required: false}
+              - {label: Creative Direction & Approach, name: story, widget: markdown, required: false}
+              - label: Portfolio Gallery
+                name: gallery
+                widget: list
+                required: false
+                field: {label: Artwork, name: image, widget: image}
+              - {label: Show on Website, name: published, widget: boolean, default: true, required: false}
