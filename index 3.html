@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deby Suteja — Creative Strategy &amp; Brand Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #15150F;
+    --text: #15150F;
+    --dark-bg: #15150F;
+    --on-dark: #F1F1EA;
+    --paper: #F1F1EA;
+    --paper-raised: #E7E6D9;
+    --body-soft: #56564B;
+    --body-faint: #6B6A5D;
+    --accent: #FF5A36;
+    --accent-soft: #FFD9CC;
+    --blue: #3452D9;
+    --gold: #C98A1F;
+    --line: #DBD9CA;
+    --shadow: rgba(21,21,15,0.18);
+    --font-display: 'Space Grotesk', 'Helvetica Neue', sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17170F; --paper-raised: #211F16; --body-soft: #A9A896; --body-faint: #8F8E7A;
+      --line: #2E2C1E; --text: #F1F1EA; --dark-bg: #0E0E09; --shadow: rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17170F; --paper-raised: #211F16; --body-soft: #A9A896; --body-faint: #8F8E7A;
+    --line: #2E2C1E; --text: #F1F1EA; --dark-bg: #0E0E09; --shadow: rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--text); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; font-size: 16px; position: relative; }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: 0.05; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+  em { font-style: normal; }
+
+  /* ---------- Dark hero ---------- */
+  .hero-dark { background: var(--dark-bg); color: var(--on-dark); position: relative; overflow: hidden; padding-bottom: 0; }
+  .hero-dark .wrap { max-width: 900px; }
+  header.top { display: flex; align-items: center; justify-content: space-between; padding: 26px 28px; max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+  .mark { font-family: var(--font-display); font-weight: 500; font-size: 15px; letter-spacing: 0.01em; color: var(--on-dark); }
+  nav.top { display: flex; gap: 26px; }
+  nav.top a { text-decoration: none; font-size: 13px; color: rgba(241,241,234,0.75); transition: color .15s ease; font-family: var(--font-mono); }
+  nav.top a:hover { color: var(--on-dark); }
+
+  /* Editorial layout A: centered page grid, left-aligned content */
+  .hero-dark .wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: clamp(24px, 5vw, 64px); }
+  .hero-dark header.top { width: 100%; max-width: 1120px; padding-inline: clamp(24px, 5vw, 64px); }
+  .hero-body { padding: clamp(56px, 7vw, 94px) 0 clamp(66px, 8vw, 100px); position: relative; z-index: 2; text-align: left; }
+  .hero-top { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
+  .avatar-wrap { width: 46px; height: 46px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(241,241,234,0.25); }
+  .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-top .who { font-size: 13px; color: rgba(241,241,234,0.7); font-family: var(--font-mono); }
+  .hero-top .who strong { color: var(--on-dark); font-weight: 500; font-family: var(--font-body); }
+
+  .hero-dark h1 {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(32px, 4.5vw, 54px);
+    line-height: 1.13; margin: 0 0 36px; letter-spacing: -0.018em;
+    max-width: 920px; overflow-wrap: break-word; text-wrap: balance;
+  }
+  .hero-dark h1 i {
+    display: block; margin-top: 0.12em; max-width: 920px;
+    font-family: var(--font-serif); font-style: italic;
+    color: var(--accent); font-weight: 400; font-size: 0.98em;
+    line-height: 1.16; text-wrap: pretty;
+  }
+  @media (max-width: 620px) {
+    .hero-dark h1 { font-size: clamp(30px, 8vw, 42px); line-height: 1.16; }
+    .hero-dark h1 i { font-size: 0.97em; }
+    .hero-body { padding-top: 48px; padding-bottom: 66px; }
+    .hero-top { align-items: flex-start; }
+    .hero-meta { row-gap: 12px; }
+  }
+
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 0; font-size: 13px; color: rgba(241,241,234,0.7); font-family: var(--font-mono); }
+  .hero-meta span { padding-right: 16px; margin-right: 16px; border-right: 1px solid rgba(241,241,234,0.18); }
+  .hero-meta span:last-child { border-right: none; }
+  .hero-meta b { color: var(--on-dark); font-weight: 500; font-family: var(--font-body); }
+
+  /* Marquee */
+  .marquee { border-top: 1px solid rgba(241,241,234,0.15); overflow: hidden; white-space: nowrap; position: relative; z-index: 2; }
+  .marquee-track { display: inline-flex; animation: scroll-left 26s linear infinite; padding: 16px 0; }
+  .marquee-track span { font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(241,241,234,0.65); padding: 0 22px; white-space: nowrap; }
+  .marquee-track span.dot { color: var(--accent); }
+  @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---------- Section heading ---------- */
+  .section-head { display: flex; align-items: baseline; gap: 14px; margin: 0 0 34px; }
+  .section-head .idx { font-family: var(--font-mono); font-size: 13px; color: var(--accent); }
+  .section-head h2 { font-family: var(--font-display); font-weight: 500; font-size: 15px; margin: 0; color: var(--body-soft); text-transform: uppercase; letter-spacing: 0.05em; }
+  section { padding: 68px 0; border-top: 1px solid var(--line); }
+
+  .about-lede { font-size: 18px; color: var(--body-soft); max-width: 58ch; margin: 0 0 44px; line-height: 1.7; }
+  .about-lede i { font-family: var(--font-serif); font-style: italic; color: var(--text); font-size: 1.1em; }
+
+  /* ---------- Project index list ---------- */
+  .shelf { display: flex; flex-direction: column; }
+  .row {
+    display: grid; grid-template-columns: 32px 1fr auto auto; align-items: baseline; gap: 18px;
+    padding: 26px 0; border-bottom: 1px solid var(--line); cursor: pointer; position: relative;
+  }
+  .row .num { font-family: var(--font-mono); font-size: 13px; color: var(--body-faint); }
+  .row .title { font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 3vw, 27px); transition: color .15s ease, transform .15s ease; }
+  .row:hover .title { color: var(--accent); transform: translateX(4px); }
+  .row .cat { font-size: 12px; color: var(--body-faint); white-space: nowrap; font-family: var(--font-mono); }
+  .row .year { font-family: var(--font-mono); font-size: 12px; color: var(--body-faint); white-space: nowrap; }
+  @media (max-width: 620px) { .row { grid-template-columns: 24px 1fr; row-gap: 6px; } .row .cat, .row .year { grid-column: 2; display: inline-block; margin-right: 12px; } }
+
+  .portfolio-tools { display:flex; align-items:center; gap:12px; margin:0 0 22px; flex-wrap:wrap; }
+  .portfolio-tools input,.portfolio-tools select { background:var(--paper);border:1px solid var(--line); color:var(--text); padding:12px 13px; border-radius:3px; font:13px var(--font-body); min-width:180px; }
+  .portfolio-tools input { flex:1; min-width:210px; }
+  .portfolio-tools #projectCount {font:12px var(--font-mono);color:var(--body-soft);margin-left:auto;}
+  .row:focus-visible, .portfolio-tools :focus-visible, .modal-close:focus-visible {outline:3px solid var(--accent);outline-offset:3px;}
+  @media(max-width:620px){.portfolio-tools input,.portfolio-tools select{width:100%;}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none!important}html{scroll-behavior:auto}}
+  /* Floating hover preview (desktop only) */
+  .hover-preview {
+    position: fixed; top: 0; left: 0; width: 220px; height: 150px; border-radius: 8px; overflow: hidden;
+    pointer-events: none; z-index: 60; opacity: 0; transform: translate(-50%, -50%) scale(0.92);
+    transition: opacity .18s ease, transform .18s ease; box-shadow: 0 18px 40px var(--shadow); background: var(--paper-raised);
+  }
+  .hover-preview.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .hover-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Experience ---------- */
+  .exp-list { display: flex; flex-direction: column; }
+  .exp-item { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .exp-item:last-child { border-bottom: none; }
+  @media (max-width: 600px) { .exp-item { grid-template-columns: 1fr; gap: 4px; } }
+  .exp-item .when { font-family: var(--font-mono); font-size: 12px; color: var(--body-faint); padding-top: 3px; }
+  .exp-item .role2 { font-weight: 500; font-size: 17px; font-family: var(--font-display); }
+  .exp-item .co { font-size: 14px; color: var(--body-soft); margin-bottom: 8px; }
+  .exp-item p { font-size: 14px; color: var(--body-soft); margin: 0; max-width: 58ch; line-height: 1.65; }
+
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
+  .skill-tag { font-size: 12px; padding: 7px 14px; color: var(--body-soft); border: 1px solid var(--line); border-radius: 100px; font-family: var(--font-mono); }
+
+  /* ---------- Dark footer bookend ---------- */
+  footer.dark { background: var(--dark-bg); color: var(--on-dark); padding: 76px 0 60px; border-top: none; position: relative; overflow: hidden; }
+  footer.dark .wrap { position: relative; z-index: 2; }
+  footer.dark h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(38px, 7vw, 68px); margin: 0 0 8px; max-width: 12ch; line-height: 1.05; }
+  footer.dark h2 i { font-family: var(--font-serif); font-style: italic; color: var(--accent); font-weight: 400; }
+  footer.dark .sub { font-size: 15px; color: rgba(241,241,234,0.68); margin: 0 0 36px; font-family: var(--font-mono); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .links a { text-decoration: none; font-size: 13px; padding: 11px 18px; border: 1px solid rgba(241,241,234,0.25); border-radius: 100px; transition: border-color .15s ease, color .15s ease, background .15s ease; font-family: var(--font-mono); color: rgba(241,241,234,0.85); }
+  .links a:hover { border-color: var(--accent); color: #15150F; background: var(--accent); }
+  footer.dark .fine { font-size: 12px; color: rgba(241,241,234,0.55); font-family: var(--font-mono); }
+
+  /* ---------- Modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(10,10,6,0.65); display: none; align-items: flex-end; justify-content: center; z-index: 50; backdrop-filter: blur(2px); }
+  .overlay.open { display: flex; }
+  @media (min-width: 700px) { .overlay { align-items: center; padding: 24px; } }
+  .modal { background: var(--paper); width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; border-radius: 18px 18px 0 0; box-shadow: 0 24px 70px var(--shadow); animation: rise .2s ease-out; }
+  @media (min-width: 700px) { .modal { border-radius: 14px; } }
+  @keyframes rise { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-cover { position: relative; background: var(--paper-raised); }
+  .modal-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; background: var(--paper-raised); }
+  .modal-gallery::-webkit-scrollbar { display: none; }
+  .modal-gallery img { width: 100%; height: 340px; object-fit: contain; display: block; flex: 0 0 100%; scroll-snap-align: start; background: var(--paper-raised); }
+  .gallery-count { position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.6); color: #fff; font-size: 11px; font-family: var(--font-mono); padding: 4px 10px; border-radius: 100px; pointer-events: none; }
+  .modal-body { padding: 26px 30px 34px; }
+  .modal-body .cat-row { font-size: 12px; color: var(--body-faint); margin-bottom: 12px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
+  .modal-body .cat-row .dot { color: var(--accent); margin: 0 8px; }
+  .modal-body h3 { font-family: var(--font-display); font-weight: 500; font-size: 28px; margin: 0 0 4px; line-height: 1.15; }
+  .modal-body .co-line { font-size: 13px; color: var(--body-faint); margin: 0 0 18px; font-family: var(--font-mono); }
+  .modal-body .desc { font-size: 15px; color: var(--body-soft); line-height: 1.75; }
+  .modal-body .desc p { margin: 0; white-space: pre-line; }
+  /* Case-study blocks are DIVs, not SECTIONs: avoid global page-section spacing. */
+  .modal-body .desc .project-section {
+    display: block;
+    padding: 20px 0 0;
+    margin: 24px 0 0;
+    border-top: 1px solid var(--line);
+    background: transparent;
+    min-height: 0;
+  }
+  .modal-body .desc .project-section:first-child { padding-top: 0; margin-top: 0; border-top: 0; }
+  .modal-body .desc .project-section h4 {
+    display: block;
+    margin: 0 0 12px;
+    color: #15150F;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    opacity: 1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .modal-body .desc .project-section h4 { color: #F1F1EA; }
+  }
+  :root[data-theme="dark"] .modal-body .desc .project-section h4 { color: #F1F1EA; }
+  .modal-body .desc .project-section p { margin: 0; line-height: 1.75; }
+  .modal-body .desc .project-summary { padding: 0 0 22px; margin: 0 0 8px; border-bottom: 1px solid var(--line); }
+  .modal-body .desc .project-summary h4 { margin: 0 0 12px; color: var(--text); font-family: var(--font-display); font-size: 18px; font-weight: 700; line-height: 1.35; }
+  .modal-body .desc .project-summary p { margin: 0; line-height: 1.75; white-space: pre-line; }
+  .modal-body .desc .project-intro { margin: 0 0 22px; }
+  @media (max-width: 480px) {
+    .modal-body .desc .project-section { margin-top: 20px; padding-top: 18px; }
+  }
+  .modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; border: none; background: rgba(255,255,255,0.92); color: #15150F; font-size: 18px; cursor: pointer; line-height: 1; }
+
+  /* === Executive Editorial Project Detail / isolated modal styling === */
+  .overlay { padding: 12px; align-items: center; background: rgba(5,5,4,.78); backdrop-filter: blur(10px); }
+  .modal { width: min(1380px, 96vw); max-width: none; max-height: min(94dvh, 1060px); border-radius: 22px; background: var(--paper); overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--line); box-shadow: 0 35px 110px rgba(0,0,0,.5); }
+  .modal-cover { background: #101015; }
+  .modal-gallery { background: #101015; }
+  .modal-gallery img { height: clamp(360px, 57dvh, 710px); max-height: 710px; object-fit: contain; background: #101015; }
+  .gallery-count { top: 22px; left: 24px; padding: 7px 12px; font-size: 12px; }
+  .modal-close { z-index: 4; top: 22px; right: 24px; width: 44px; height: 44px; font-size: 22px; box-shadow: 0 4px 16px rgba(0,0,0,.25); }
+  .modal-body { width: 100%; max-width: none; margin: 0; padding: clamp(28px,4vw,64px) clamp(24px,5vw,78px) 72px; }
+  .modal-body .cat-row { font-size: 12px; letter-spacing: .13em; margin: 0 0 17px; }
+  .modal-body h3 { max-width: 1100px; font-size: clamp(34px,4.4vw,64px); letter-spacing: -.035em; line-height: 1.06; font-weight: 500; margin: 0 0 18px; }
+  .modal-body .co-line { font-size: 14px; letter-spacing: .045em; margin: 0 0 38px; }
+  .modal-body .desc { font-size: clamp(16px,1.5vw,19px); line-height: 1.78; max-width: 1060px; }
+  .modal-body .desc .project-summary { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 16px; padding: clamp(23px,3vw,40px); margin: 0 0 40px; }
+  .modal-body .desc .project-summary h4 { color: var(--accent); font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 17px; }
+  .modal-body .desc .project-section { padding: 30px 0 0; margin: 30px 0 0; border-top: 1px solid var(--line); }
+  .modal-body .desc .project-section:first-child { padding-top: 0; margin-top: 0; border-top: 0; }
+  .modal-body .desc .project-section h4 { color: var(--text) !important; font-family: var(--font-mono); font-size: 14px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin: 0 0 14px; }
+  .modal-body .desc .project-section p { line-height: 1.8; }
+  @media (max-width: 699px) {
+    .overlay { padding: 0; align-items: flex-end; }
+    .modal { width: 100vw; max-height: 96dvh; border-radius: 18px 18px 0 0; }
+    .modal-gallery img { height: clamp(240px, 40dvh, 440px); }
+    .modal-body { padding: 27px 22px 46px; }
+    .modal-body h3 { font-size: clamp(30px, 8vw, 43px); }
+    .modal-body .co-line { margin-bottom: 24px; }
+    .modal-body .desc .project-summary { padding: 22px; margin-bottom: 26px; }
+    .modal-body .desc .project-section { padding-top: 22px; margin-top: 22px; }
+  }
+
+
+  /* Fullscreen project artwork viewer */
+  .art-lightbox { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; background: rgba(4,5,8,.97); padding: 60px 68px; }
+  .art-lightbox.open { display: flex; }
+  .art-lightbox img { display: block; max-width: 100%; max-height: calc(100dvh - 120px); width: auto; height: auto; object-fit: contain; box-shadow: 0 18px 65px rgba(0,0,0,.35); }
+  .art-lightbox button { position: absolute; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(25,25,25,.82); color: white; width: 48px; height: 48px; font-size: 27px; cursor: pointer; display: grid; place-items: center; }
+  .art-lightbox button:hover, .art-lightbox button:focus-visible { border-color: #fff; background: #353535; }
+  .art-lightbox .lb-close { top: 20px; right: 22px; }
+  .art-lightbox .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+  .art-lightbox .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+  .art-lightbox .lb-counter { position: absolute; top: 32px; left: 24px; color: #fff; font: 13px var(--font-mono); }
+  .art-lightbox .lb-caption { position: absolute; bottom: 18px; left: 16px; right: 16px; color: #d8d8d8; text-align: center; font: 13px var(--font-mono); }
+  .modal-gallery img { cursor: zoom-in; }
+  @media (max-width: 700px) { .art-lightbox { padding: 62px 12px 74px; } .art-lightbox img { max-height: calc(100dvh - 150px); } .art-lightbox .lb-prev { left: 8px; } .art-lightbox .lb-next { right: 8px; } .art-lightbox button { width: 38px; height: 38px; font-size: 23px; } }
+
+/* Strategic Design Leadership / V-C: scoped, additive styles */
+.modal-body .leadership-kicker{font:600 11px var(--font-mono);letter-spacing:.17em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.modal-body .leadership-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:22px 0 36px}
+.modal-body .leadership-fact{padding:20px 18px 22px 0;min-width:0}
+.modal-body .leadership-fact+.leadership-fact{border-left:1px solid var(--line);padding-left:22px}
+.modal-body .leadership-fact dt{font:600 10px var(--font-mono);text-transform:uppercase;letter-spacing:.14em;color:var(--body-faint);margin-bottom:10px}
+.modal-body .leadership-fact dd{margin:0;font:500 clamp(14px,1.2vw,18px)/1.4 var(--font-body);color:var(--text);overflow-wrap:anywhere}
+.modal-body .leadership-narrative{display:grid;grid-template-columns:minmax(140px,240px) minmax(0,1fr);gap:28px;padding:30px 0;border-top:1px solid var(--line)}
+.modal-body .leadership-narrative h4{margin:0;color:var(--accent);font:600 11px var(--font-mono);letter-spacing:.14em;text-transform:uppercase}
+.modal-body .leadership-narrative p{margin:0;max-width:860px;white-space:pre-line;color:var(--body-soft);font-size:clamp(16px,1.35vw,19px);line-height:1.75}
+.modal-body .leadership-narrative.is-impact{background:linear-gradient(90deg,rgba(255,90,54,.045),transparent);border-radius:12px;padding-inline:20px}
+@media(max-width:800px){.modal-body .leadership-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.modal-body .leadership-fact:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--line)}.modal-body .leadership-fact:nth-child(4){border-top:1px solid var(--line)}.modal-body .leadership-narrative{grid-template-columns:1fr;gap:10px}}
+@media(max-width:420px){.modal-body .leadership-facts{grid-template-columns:1fr}.modal-body .leadership-fact+.leadership-fact{border-left:0;padding-left:0;border-top:1px solid var(--line)}}
+
+
+/* Strategic Leadership Rich Text V2 — self contained, responsive, no global section selectors */
+.modal-body .leadership-facts{grid-template-columns:repeat(2,minmax(0,1fr));margin:20px 0 42px;gap:0}
+.modal-body .leadership-fact{padding:22px 26px 24px 0;border-top:1px solid var(--line)}
+.modal-body .leadership-fact+.leadership-fact{border-left:0;padding-left:0}
+.modal-body .leadership-fact:nth-child(even){padding-left:28px;border-left:1px solid var(--line)}
+.modal-body .leadership-fact dd{font-size:clamp(15px,1.1vw,18px);line-height:1.55;max-width:36ch;white-space:normal}
+.modal-body .leadership-narrative{grid-template-columns:minmax(140px,220px) minmax(0,1fr)}
+.modal-body .rich-content{min-width:0;color:var(--body-soft);font-size:clamp(16px,1.3vw,19px);line-height:1.75;overflow-wrap:anywhere}
+.modal-body .rich-content p{margin:0 0 1em;white-space:normal}
+.modal-body .rich-content p:last-child,.modal-body .rich-content ul:last-child,.modal-body .rich-content ol:last-child{margin-bottom:0}
+.modal-body .rich-content h2,.modal-body .rich-content h3,.modal-body .rich-content h4{font-family:var(--font-display);letter-spacing:-.015em;text-transform:none;color:var(--text);margin:1.25em 0 .45em;line-height:1.3}
+.modal-body .rich-content h2{font-size:1.35em}.modal-body .rich-content h3{font-size:1.16em}.modal-body .rich-content h4{font-size:1.05em}
+.modal-body .rich-content strong{color:var(--text);font-weight:700}
+.modal-body .rich-content em{font-style:italic}
+.modal-body .rich-content ul,.modal-body .rich-content ol{padding-left:1.45em;margin:.45em 0 1.15em}
+.modal-body .rich-content li{padding-left:.15em;margin:.3em 0}
+.modal-body .rich-content li::marker{color:var(--accent)}
+.modal-body .rich-content a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.modal-body .desc .project-section .rich-content p,.modal-body .desc .project-summary .rich-content p{white-space:normal}
+@media(max-width:700px){.modal-body .leadership-facts{grid-template-columns:1fr}.modal-body .leadership-fact,.modal-body .leadership-fact:nth-child(even){border-left:0;padding-left:0}}
+
+
+/* === CREATIVE LEADERSHIP POLISHED / RESPONSIVE SCALE v3 === */
+/* Scoped refinements; preserves Decap content binding and existing JS interactions. */
+:root { --page-max: 1360px; }
+.wrap { width:100%; max-width:var(--page-max); margin-inline:auto; padding-inline:clamp(24px,4vw,64px); }
+.hero-dark .wrap, .hero-dark header.top { width:100%; max-width:var(--page-max); margin-inline:auto; padding-inline:clamp(24px,4vw,64px); }
+.hero-body { padding-top:clamp(82px,9vw,146px); padding-bottom:clamp(92px,10vw,156px); }
+.hero-top { margin-bottom:36px; }
+.hero-dark h1 { font-size:clamp(52px,6.1vw,96px); max-width:1200px; line-height:1.09; letter-spacing:-.035em; margin-bottom:48px; }
+.hero-dark h1 i { max-width:1200px; line-height:1.12; }
+.hero-meta { font-size:clamp(13px,1.2vw,15px); row-gap:12px; }
+section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px); }
+.section-head { margin-bottom:40px; }
+.section-head h2 { font-size:clamp(14px,1.15vw,18px); }
+.portfolio-tools { margin-bottom:30px; gap:14px; }
+.portfolio-tools input,.portfolio-tools select { font-size:15px; padding:14px 16px; }
+.row { grid-template-columns:42px minmax(0,1fr) auto auto; gap:22px; padding:34px 0; align-items:baseline; }
+.row .title { font-size:clamp(26px,3.4vw,46px); line-height:1.16; letter-spacing:-.02em; }
+.row .cat,.row .year { font-size:13px; }
+/* Executive snapshot: content is allowed to breathe without overflowing narrow columns. */
+.modal-body .leadership-facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; margin:28px 0 44px; }
+.modal-body .leadership-fact { min-width:0; padding:24px 30px 26px 0; border-top:1px solid var(--line); }
+.modal-body .leadership-fact + .leadership-fact { border-left:0; padding-left:0; }
+.modal-body .leadership-fact:nth-child(even) { border-left:1px solid var(--line); padding-left:32px; }
+.modal-body .leadership-fact dt { letter-spacing:.15em; font-size:11px; }
+.modal-body .leadership-fact dd { max-width:44ch; font-size:clamp(15px,1.1vw,18px); line-height:1.6; }
+.modal-body .leadership-narrative { grid-template-columns:minmax(155px,220px) minmax(0,1fr); gap:30px; padding-block:36px; }
+.modal-body .rich-content { max-width:850px; line-height:1.78; }
+.modal-body .rich-content strong { font-weight:700; }
+.modal-body .rich-content em { font-style:italic; }
+/* Mobile-first overrides after desktop refinements. */
+@media (max-width:900px) {
+ .row { grid-template-columns:32px minmax(0,1fr); gap:12px 16px; }
+ .row .cat,.row .year { grid-column:2; white-space:normal; }
+ .row .title { font-size:clamp(24px,4.5vw,36px); }
+ .hero-dark h1 { font-size:clamp(42px,6.6vw,66px); }
+}
+@media (max-width:700px) {
+ .wrap,.hero-dark .wrap,.hero-dark header.top { padding-inline:22px; }
+ .hero-body { padding-top:58px; padding-bottom:76px; }
+ .hero-dark h1 { font-size:clamp(38px,9vw,54px); line-height:1.14; margin-bottom:32px; }
+ .hero-top { margin-bottom:26px; }
+ .row { padding:26px 0; }
+ .row .title { font-size:clamp(24px,6vw,32px); }
+ .portfolio-tools input,.portfolio-tools select { width:100%; }
+ .modal-body .leadership-facts { grid-template-columns:1fr; }
+ .modal-body .leadership-fact,.modal-body .leadership-fact:nth-child(even) { border-left:0; padding-left:0; }
+ .modal-body .leadership-narrative { grid-template-columns:1fr; gap:12px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="hero-dark">
+  <header class="top">
+    <div class="mark" data-site="site_name">Deby Suteja</div>
+    <nav class="top">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <div class="hero-body">
+      <div class="hero-top">
+        <div class="avatar-wrap"><img src="images/foto-profil.jpg" data-site-image="profile_image" alt="Deby Suteja"></div>
+        <div class="who"><span data-site="greeting">Halo, saya</span> <strong data-site="display_name">Deby</strong> — <span data-site="job_location">Graphic Design Manager, Jakarta</span></div>
+      </div>
+      <h1><span data-site="hero_headline">Creative strategy &amp; brand direction,</span> <i data-site="hero_highlight">diterjemahkan jadi visual yang bekerja di rak.</i></h1>
+      <div class="hero-meta">
+        <span>Currently at <b data-site="current_company">PT Kapal Api Global</b></span>
+        <span><b data-site="experience_summary">10+ tahun</b> of Experience</span>
+        <span>Expertise: <b data-site="specialties">Packaging · POSM · Campaign</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="work" style="border-top:none;">
+    <div class="section-head"><span class="idx">00</span><h2 data-site="work_heading">Selected Work</h2></div>
+    <div class="portfolio-tools" aria-label="Filter portfolio">
+      <input id="projectSearch" type="search" placeholder="Search projects, brands, or keywords..." aria-label="Search projects" autocomplete="off">
+      <select id="projectCategory" aria-label="Filter by category"><option value="">All categories</option></select>
+      <span id="projectCount" role="status" aria-live="polite"></span>
+    </div>
+    <div class="shelf" id="shelf" aria-live="polite"></div>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><span class="idx">01</span><h2 data-site="about_heading">About</h2></div>
+    <p class="about-lede" data-site="about_intro">Creative professional with 10+ years of experience in visual communication and creative design, including 4+ years focused on FMCG/CPG campaign assets, POSM, packaging support, and brand communication — menerjemahkan objektif marketing jadi creative direction, campaign concept, dan visual system yang konsisten lintas retail, packaging, POSM, dan digital.</p>
+
+    <div class="exp-list" id="siteExperience">
+      <div class="exp-item">
+        <div class="when">Jan 2026<br>Present</div>
+        <div>
+          <div class="role2">Graphic Design Manager</div>
+          <div class="co">PT. Kapal Api Group</div>
+          <p>Memimpin creative design direction dan visual communication development untuk brand communication, marketing campaign, dan cross-channel creative execution.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="when">Sep 2022<br>2025</div>
+        <div>
+          <div class="role2">Graphic Designer Supervisor</div>
+          <div class="co">Diamond Cold Storage</div>
+          <p>Mengawasi creative development dan visual execution untuk Diamond dan brand FMCG terkait — campaign visual, POSM, packaging update, dan digital communication asset.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="when">Mar 2021<br>Sep 2022</div>
+        <div>
+          <div class="role2">Graphic Designer</div>
+          <div class="co">Brandztory Digital Creative Agency</div>
+          <p>Mengembangkan client-based branding, social media campaign, digital content, creative proposal, moodboard, dan konsep photoshoot.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="when">Dec 2016<br>Dec 2020</div>
+        <div>
+          <div class="role2">Junior – Senior Graphic Designer</div>
+          <div class="co">PT. Ksatria Palu Gada</div>
+          <p>Mendukung branding, promotional design, layout development, internal communication material, dan production-ready creative asset.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills" id="siteSkills">
+      <span class="skill-tag">Packaging Design</span>
+      <span class="skill-tag">Creative Strategy</span>
+      <span class="skill-tag">Brand Campaign Direction</span>
+      <span class="skill-tag">POSM &amp; Retail Activation</span>
+      <span class="skill-tag">Brand Communication</span>
+    </div>
+  </section>
+
+  <!-- TEMPLATE SECTION BARU: copy blok section di bawah, paste di LUAR komentar ini
+       (misalnya tepat di bawah komentar ini), lalu ganti isinya.
+  <section id="nama-section">
+    <div class="section-head"><span class="idx">02</span><h2>Judul Section</h2></div>
+    <p class="about-lede">Isi teks kamu di sini.</p>
+  </section>
+  Biar muncul di menu atas, tambah satu baris di dalam nav class="top": a href="#nama-section" Nama /a
+  -->
+
+</div>
+
+<footer class="dark" id="contact">
+  <div class="wrap">
+    <h2><span data-site="contact_heading">Ngobrol soal</span> <i data-site="contact_highlight">project?</i></h2>
+    <p class="sub" data-site="contact_location">Jakarta, Indonesia</p>
+    <div class="links">
+      <a data-site-href="linkedin" href="https://www.linkedin.com/in/debysuteja/" target="_blank" rel="noopener">LinkedIn</a>
+      <a data-site-href="behance" href="https://www.behance.net/debbysutedja" target="_blank" rel="noopener">Behance</a>
+      <a data-site-href="instagram" href="https://www.instagram.com/debysuteja/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <p class="fine">© <span data-site="site_name">Deby Suteja</span></p>
+  </div>
+</footer>
+
+<div class="hover-preview" id="hoverPreview"><img id="hoverPreviewImg" src="" alt=""></div>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal" id="modal">
+    <div class="modal-cover">
+      <div class="modal-gallery" id="modalGallery"></div>
+      <span class="gallery-count" id="galleryCount"></span>
+      <button class="modal-close" id="modalClose" aria-label="Close project details">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="cat-row"><span id="modalCat"></span><span class="dot">·</span><span id="modalYear"></span></div>
+      <h3 id="modalTitle"></h3>
+      <p class="co-line" id="modalCo"></p>
+      <div id="modalLeadership" hidden></div>
+      <div class="desc" id="modalDesc"></div>
+    </div>
+  </div>
+</div>
+
+<div class="art-lightbox" id="artLightbox" role="dialog" aria-modal="true" aria-label="Fullscreen project artwork" aria-hidden="true">
+  <span class="lb-counter" id="lbCounter"></span>
+  <button type="button" class="lb-close" id="lbClose" aria-label="Close fullscreen artwork">&times;</button>
+  <button type="button" class="lb-prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+  <img id="lbImage" alt="" />
+  <button type="button" class="lb-next" id="lbNext" aria-label="Next image">&#8250;</button>
+  <div class="lb-caption" id="lbCaption"></div>
+</div>
+
+<script>
+  // Text and profile settings are managed from /admin → Website Content.
+  async function loadSiteContent() {
+    try {
+      const response = await fetch('/content/site.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const settings = await response.json();
+      if (!settings || typeof settings !== 'object') return;
+      document.querySelectorAll('[data-site]').forEach(el => {
+        const key = el.getAttribute('data-site');
+        if (typeof settings[key] === 'string') el.textContent = settings[key];
+      });
+      if (typeof settings.page_title === 'string') document.title = settings.page_title;
+      document.querySelectorAll('[data-site-href]').forEach(el => {
+        const val = settings[el.getAttribute('data-site-href')];
+        if (typeof val === 'string' && /^https:\/\//i.test(val)) el.href = val;
+      });
+      document.querySelectorAll('[data-site-image]').forEach(el => {
+        const val = settings[el.getAttribute('data-site-image')];
+        if (typeof val === 'string' && (/^\/(?!\/)/.test(val) || /^https:\/\//i.test(val))) el.src = val;
+      });
+      if (Array.isArray(settings.experience)) {
+        const list = document.getElementById('siteExperience');
+        list.replaceChildren();
+        settings.experience.forEach(item => {
+          if (!item || typeof item !== 'object') return;
+          const outer = document.createElement('div'); outer.className = 'exp-item';
+          const when = document.createElement('div'); when.className = 'when'; when.textContent = item.period || '';
+          const body = document.createElement('div');
+          const role = document.createElement('div'); role.className = 'role2'; role.textContent = item.role || '';
+          const co = document.createElement('div'); co.className = 'co'; co.textContent = item.company || '';
+          const desc = document.createElement('p'); desc.textContent = item.description || '';
+          body.append(role, co, desc); outer.append(when, body); list.append(outer);
+        });
+      }
+      if (Array.isArray(settings.skills)) {
+        const list = document.getElementById('siteSkills'); list.replaceChildren();
+        settings.skills.forEach(skill => {
+          if (typeof skill !== 'string') return;
+          const el = document.createElement('span'); el.className = 'skill-tag'; el.textContent = skill; list.append(el);
+        });
+      }
+    } catch (error) { console.warn('Website text settings unavailable; using built-in defaults', error); }
+  }
+  loadSiteContent();
+
+  // Project content is managed from /admin and stored in /content/projects.json.
+  let projects = [];
+
+  // marquee content
+  const marqueeItems = ["Packaging Design", "Brand Campaign", "POSM & Retail Activation", "Creative Direction", "Brand Communication"];
+  const track = document.getElementById("marqueeTrack");
+  for (let r = 0; r < 2; r++) {
+    marqueeItems.forEach(t => {
+      const s1 = document.createElement("span"); s1.textContent = t; track.appendChild(s1);
+      const s2 = document.createElement("span"); s2.className = "dot"; s2.textContent = "•"; track.appendChild(s2);
+    });
+  }
+
+  // project list
+  const shelf = document.getElementById("shelf");
+  const hoverPreview = document.getElementById("hoverPreview");
+  const hoverPreviewImg = document.getElementById("hoverPreviewImg");
+  const canHover = window.matchMedia("(hover: hover)").matches;
+
+  const projectSearch = document.getElementById('projectSearch');
+  const projectCategory = document.getElementById('projectCategory');
+  const projectCount = document.getElementById('projectCount');
+  const escapeHtml = (value) => String(value ?? '');
+  const imagePath = (path) => {
+    if (!path || typeof path !== 'string') return '';
+    // Relative paths are resolved from the website root; absolute and remote media remain valid.
+    if (/^(https?:|data:|blob:)/i.test(path)) return path;
+    return '/' + path.replace(/^\/+/, '');
+  };
+  async function loadProjects() {
+    try {
+      const response = await fetch('/content/projects.json', {cache:'no-store'});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const data = await response.json();
+      projects = Array.isArray(data.projects) ? data.projects.filter(p => p && p.published !== false) : [];
+      const cats = [...new Set(projects.map(p => String(p.cat || '').trim()).filter(Boolean))].sort();
+      cats.forEach(cat => { const option = document.createElement('option');option.value = cat;option.textContent = cat;projectCategory.appendChild(option); });
+      renderProjects();
+    } catch (error) {
+      console.error('Unable to load portfolio projects:', error);
+      shelf.textContent = 'Projects could not be loaded. Please refresh or check content/projects.json.';
+      projectCount.textContent = 'Unavailable';
+    }
+  }
+  function renderProjects() {
+    shelf.replaceChildren();
+    const search = projectSearch.value.trim().toLocaleLowerCase();
+    const cat = projectCategory.value;
+    const filtered = projects.map((p,i) => ({p,i})).filter(({p}) =>
+      (!cat || p.cat === cat) && (!search || [p.title,p.cat,p.year,p.company,p.desc,...(p.sections || []).flatMap(section => [section.heading, section.body])].some(v => String(v || '').toLocaleLowerCase().includes(search)))
+    );
+    projectCount.textContent = `${filtered.length} / ${projects.length} projects`;
+    if (!filtered.length) { const empty=document.createElement('p');empty.textContent='No matching projects. Try another keyword or category.';shelf.appendChild(empty);return; }
+    filtered.forEach(({p,i}, visibleIndex) => {
+      const row = document.createElement('div');
+      row.className = 'row';row.tabIndex = 0;row.setAttribute('role','button');
+      row.setAttribute('aria-label',`View ${p.title || 'project'} details`);
+      for (const [className,value] of [['num',String(visibleIndex+1).padStart(2,'0')],['title',p.title || 'Untitled Project'],['cat',p.cat || ''],['year',p.year || '']]) {
+        const cell=document.createElement('div');cell.className=className;cell.textContent=value;row.appendChild(cell);
+      }
+      row.addEventListener('click',()=>openModal(i));
+      row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(i);}});
+      if(canHover){row.addEventListener('mouseenter',()=>{if(p.images?.length){hoverPreviewImg.src=imagePath(p.images[0]);hoverPreview.classList.add('show');}});row.addEventListener('mouseleave',()=>hoverPreview.classList.remove('show'));}
+      shelf.appendChild(row);
+    });
+  }
+  projectSearch.addEventListener('input', renderProjects);
+  projectCategory.addEventListener('change', renderProjects);
+  loadProjects();
+
+  if (canHover) {
+    document.addEventListener("mousemove", (e) => {
+      hoverPreview.style.left = e.clientX + "px";
+      hoverPreview.style.top = e.clientY + "px";
+    });
+  }
+
+  const overlay = document.getElementById("overlay");
+  const galleryEl = document.getElementById("modalGallery");
+  const countEl = document.getElementById("galleryCount");
+  let currentCount = 1;
+  let previouslyFocused = null;
+  let activeProject = null;
+  let lightboxIndex = 0;
+  let lightboxReturnFocus = null;
+  const lightbox = document.getElementById('artLightbox');
+  const lbImage = document.getElementById('lbImage');
+  const lbCounter = document.getElementById('lbCounter');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  const lbClose = document.getElementById('lbClose');
+  function showLightboxImage(index) {
+    const images = activeProject?.images || [];
+    if (!images.length) return;
+    lightboxIndex = (index + images.length) % images.length;
+    lbImage.src = imagePath(images[lightboxIndex]);
+    lbImage.alt = `${activeProject.title || 'Project'} — image ${lightboxIndex + 1}`;
+    lbCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
+    lbCaption.textContent = activeProject.title || 'Project artwork';
+    lbPrev.hidden = images.length < 2;
+    lbNext.hidden = images.length < 2;
+  }
+  function openLightbox(index, trigger) {
+    if (!activeProject?.images?.length) return;
+    lightboxReturnFocus = trigger || document.activeElement;
+    showLightboxImage(index);
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    overlay.setAttribute('aria-hidden', 'true');
+    lbClose.focus();
+  }
+  function closeLightbox() {
+    if (!lightbox.classList.contains('open')) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-hidden', 'false');
+    lbImage.removeAttribute('src');
+    if (lightboxReturnFocus?.isConnected) lightboxReturnFocus.focus();
+  }
+  galleryEl.addEventListener('click', (event) => {
+    const target = event.target.closest('img');
+    if (!target) return;
+    openLightbox([...galleryEl.querySelectorAll('img')].indexOf(target), target);
+  });
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => showLightboxImage(lightboxIndex - 1));
+  lbNext.addEventListener('click', () => showLightboxImage(lightboxIndex + 1));
+  lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+
+
+
+  // Render a safe, intentionally limited Markdown subset. No raw HTML is interpreted.
+  // Supports headings, paragraphs, bold, italic, lists and safe http(s)/mailto links.
+  function richInline(raw) {
+    let text = String(raw || '');
+    const escapes = v => v.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    const links = [];
+    text = text.replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/gi, (_all, label, url) => {
+      const marker = `\uE000${links.length}\uE001`;
+      links.push('<a href="'+escapes(url)+'" target="_blank" rel="noopener noreferrer">'+escapes(label)+'</a>');
+      return marker;
+    });
+    text = escapes(text);
+    text = text.replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>')
+      .replace(/__([^_\n]+)__/g,'<strong>$1</strong>')
+      .replace(/(^|[^*])\*([^*\n]+)\*/g,'$1<em>$2</em>')
+      .replace(/(^|[^_])_([^_\n]+)_/g,'$1<em>$2</em>');
+    return text.replace(/\uE000(\d+)\uE001/g, (_m, n) => links[Number(n)] || '');
+  }
+  function richBlocks(raw) {
+    const text = String(raw || '').replace(/\r\n?/g,'\n');
+    const lines = text.split('\n');
+    const output = []; let paragraph = []; let list = null;
+    function flushParagraph(){if(paragraph.length){output.push('<p>'+paragraph.map(richInline).join('<br>')+'</p>');paragraph=[];}}
+    function flushList(){if(list){output.push('</'+list+'>');list=null;}}
+    for(const line of lines){
+      const clean=line.trim();
+      if(!clean){flushParagraph();flushList();continue;}
+      const h=clean.match(/^(#{1,4})\s+(.+)$/);
+      const li=clean.match(/^(?:([-*])\s+|(\d+)\.\s+)(.+)$/);
+      if(h){flushParagraph();flushList();const level=Math.min(4,Math.max(2,h[1].length+1));output.push('<h'+level+'>'+richInline(h[2])+'</h'+level+'>');continue;}
+      if(li){flushParagraph();const kind=li[2]?'ol':'ul';if(list!==kind){flushList();output.push('<'+kind+'>');list=kind;}output.push('<li>'+richInline(li[3])+'</li>');continue;}
+      flushList();paragraph.push(clean);
+    }
+    flushParagraph();flushList();return output.join('');
+  }
+  function setRichContent(element, value){element.classList.add('rich-content');element.innerHTML=richBlocks(value);}
+
+  // Build structured case-study sections from the existing plain-text CMS description.
+  // Text stays safe: only DOM textContent is used (never untrusted innerHTML).
+  function renderProjectDescription(container, description, sections) {
+    if (Array.isArray(sections) && sections.length) {
+      container.replaceChildren();
+      // Always retain the CMS legacy description as a summary above custom sections.
+      const summary = String(description || "").trim();
+      if (summary) {
+        const intro = document.createElement("div");
+        intro.className = "project-summary";
+        const summaryTitle = document.createElement("h4");
+        summaryTitle.textContent = "Project Summary";
+        const summaryText = document.createElement("p");
+        setRichContent(summaryText, summary);
+        intro.append(summaryTitle, summaryText);
+        container.appendChild(intro);
+      }
+      for (const item of sections) {
+        if (!item || (!String(item.heading || "").trim() && !String(item.body || "").trim())) continue;
+        const section = document.createElement("div");
+        section.className = "project-section";
+        if (String(item.heading || "").trim()) {
+          const heading = document.createElement("h4");
+          heading.textContent = item.heading;
+          section.appendChild(heading);
+        }
+        if (String(item.body || "").trim()) {
+          const paragraph = document.createElement("p");
+          setRichContent(paragraph, item.body);
+          section.appendChild(paragraph);
+        }
+        container.appendChild(section);
+      }
+      return;
+    }
+    container.replaceChildren();
+    const source = String(description || "").trim();
+    if (!source) return;
+    const headings = /(?:^|\s)(Challenge|Objective|Creative Strategy|Outcome)\s*:?\s*/g;
+    const matches = [...source.matchAll(headings)];
+    if (!matches.length) {
+      const p = document.createElement("p");
+      setRichContent(p, source);
+      container.appendChild(p);
+      return;
+    }
+    const intro = source.slice(0, matches[0].index).trim();
+    if (intro) {
+      const p = document.createElement("p");
+      p.className = "project-intro";
+      setRichContent(p, intro);
+      container.appendChild(p);
+    }
+    matches.forEach((match, index) => {
+      const start = match.index + match[0].length;
+      const end = index + 1 < matches.length ? matches[index + 1].index : source.length;
+      const section = document.createElement("div");
+      section.className = "project-section";
+      const heading = document.createElement("h4");
+      heading.textContent = match[1];
+      section.appendChild(heading);
+      const text = source.slice(start, end).trim();
+      if (text) {
+        const p = document.createElement("p");
+        setRichContent(p, text);
+        section.appendChild(p);
+      }
+      container.appendChild(section);
+    });
+  }
+
+
+  // Strategic Design Leadership: optional CMS fields, safe DOM rendering only.
+  function renderLeadership(project) {
+    const root = document.getElementById('modalLeadership');
+    root.replaceChildren();
+    const facts = [
+      ['My Role', project.role],
+      ['Scope', project.scope],
+      ['Collaboration', project.collaboration],
+      ['Project Impact', project.impact_summary]
+    ].filter(([, value]) => typeof value === 'string' && value.trim());
+    const narratives = [
+      ['Strategic Context', project.strategic_context],
+      ['Creative Leadership', project.creative_leadership],
+      ['Decisions & Direction', project.key_decisions],
+      ['Outcomes & Learning', project.project_impact]
+    ].filter(([, value]) => typeof value === 'string' && value.trim());
+    root.hidden = facts.length === 0 && narratives.length === 0;
+    if (root.hidden) return;
+    const eyebrow = document.createElement('p');
+    eyebrow.className = 'leadership-kicker';
+    eyebrow.textContent = 'Leadership & Project Context';
+    root.appendChild(eyebrow);
+    if (facts.length) {
+      const dl = document.createElement('dl');
+      dl.className = 'leadership-facts';
+      for (const [label, value] of facts) {
+        const div = document.createElement('div'); div.className = 'leadership-fact';
+        const dt = document.createElement('dt'); dt.textContent = label;
+        const dd = document.createElement('dd'); dd.textContent = value;
+        div.append(dt, dd); dl.appendChild(div);
+      }
+      root.appendChild(dl);
+    }
+    for (const [label,value] of narratives) {
+      const div = document.createElement('div');
+      div.className = 'leadership-narrative' + (label === 'Outcomes & Learning' ? ' is-impact' : '');
+      const h = document.createElement('h4'); h.textContent = label;
+      const p = document.createElement('div'); setRichContent(p, value);
+      div.append(h,p); root.appendChild(div);
+    }
+  }
+
+  function openModal(i) {
+    const p = projects[i];
+    if (!p) return;
+    previouslyFocused = document.activeElement;
+    activeProject = p;
+    hoverPreview.classList.remove("show");
+    galleryEl.innerHTML = "";
+    (p.images || []).forEach((src, index) => {
+      const im = document.createElement("img");
+      im.src = imagePath(src);
+      im.alt = `${p.title || "Project"} — image ${index + 1}`;
+      im.loading = index ? "lazy" : "eager";
+      im.tabIndex = 0;
+      im.setAttribute("role", "button");
+      im.setAttribute("aria-label", `View fullscreen ${im.alt}`);
+      im.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openLightbox(index, im); } });
+      galleryEl.appendChild(im);
+    });
+    galleryEl.scrollLeft = 0;
+    currentCount = (p.images || []).length;
+    countEl.style.display = currentCount > 1 ? "block" : "none";
+    countEl.textContent = "1 / " + currentCount;
+    document.getElementById("modalCat").textContent = p.cat;
+    document.getElementById("modalYear").textContent = p.year;
+    document.getElementById("modalTitle").textContent = p.title;
+    document.getElementById("modalCo").textContent = p.company;
+    renderLeadership(p);
+    renderProjectDescription(document.getElementById("modalDesc"), p.desc, p.sections);
+    overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.getElementById("modalClose").focus();
+    document.body.style.overflow = "hidden";
+  }
+  galleryEl.addEventListener("scroll", () => {
+    if (currentCount <= 1) return;
+    const idx = Math.round(galleryEl.scrollLeft / galleryEl.clientWidth) + 1;
+    countEl.textContent = idx + " / " + currentCount;
+  });
+  function closeModal() {
+    closeLightbox();
+    overlay.classList.remove("open");
+    overlay.setAttribute("aria-hidden", "true");
+    if(previouslyFocused?.isConnected) previouslyFocused.focus();
+    document.body.style.overflow = "";
+  }
+  document.getElementById("modalClose").addEventListener("click", closeModal);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.classList.contains('open')) {
+      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); showLightboxImage(lightboxIndex - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); showLightboxImage(lightboxIndex + 1); }
+      if (e.key === 'Tab') { e.preventDefault(); const controls = [lbClose, ...(lbPrev.hidden ? [] : [lbPrev, lbNext])]; const index = controls.indexOf(document.activeElement); controls[(index + (e.shiftKey ? controls.length - 1 : 1)) % controls.length].focus(); }
+      return;
+    }
+    if (e.key === "Escape" && overlay.classList.contains('open')) closeModal();
+    if (e.key === "Tab" && overlay.classList.contains('open')) {
+      // Keep keyboard focus in the dialog until it closes.
+      e.preventDefault();document.getElementById('modalClose').focus();
+    }
+  });
+</script>
+
+</body>
+</html>
