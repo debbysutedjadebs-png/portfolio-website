@@ -1,0 +1,31 @@
+{
+  "features": [
+    {
+      "title": "Social Media Design",
+      "subtitle": "Digital Campaigns & Art Direction",
+      "cover": "",
+      "description": "A curated selection of digital storytelling and social-first creative executions.",
+      "story": "## Creative Direction\nDescribe the strategic approach, concept development, and visual decisions behind this collection.",
+      "gallery": [],
+      "published": true
+    },
+    {
+      "title": "Packaging & Identity",
+      "subtitle": "Packaging Design & Brand Systems",
+      "cover": "",
+      "description": "A collection of packaging systems, product identity, and brand communication.",
+      "story": "",
+      "gallery": [],
+      "published": true
+    },
+    {
+      "title": "Campaign & POSM",
+      "subtitle": "Retail Activation & Brand Experiences",
+      "cover": "",
+      "description": "Integrated campaign concepts, key visuals, and in-store communication.",
+      "story": "",
+      "gallery": [],
+      "published": true
+    }
+  ]
+}
