@@ -74,14 +74,37 @@
       "published": true
     },
     {
-      "title": "Diamond UHT Milk — New Nutritional Claim Design",
+      "title": "Diamond UHT Milk Marshmallow — Packaging Identity & Brand Experience",
       "cat": "Packaging Design",
       "year": "2026",
       "company": "Diamond Cold Storage",
       "images": [
-        "images/diamond-uht-milk-new-nutritional-claim-design-1.jpg"
+        "/images/artboard-6-01.png",
+        "/images/artboard-3.png",
+        "/images/artboard-6-03.png",
+        "/images/artboard-6-04.png",
+        "/images/artboard-6-02.png"
       ],
-      "desc": "Developed a new visual claim for “9 Vitamins & 6 Minerals” to make the product benefit more distinctive and easier to recognize across Diamond Milk packaging. The claim system was designed to work consistently across three pack sizes while remaining flexible enough to follow each format's layout and proportion."
+      "desc": "Directed the packaging identity development for Diamond UHT Milk Marshmallow, translating a playful product proposition into a distinctive, character-led visual system. Established a cohesive design direction across 125 ml and 200 ml formats, balancing brand consistency, product differentiation, and shelf visibility while extending the packaging identity into engaging lifestyle and consumer brand experiences.",
+      "sections": [
+        {
+          "body": "Develop a distinctive packaging identity for Diamond UHT Milk Marshmallow that captures the playful character of the flavor while maintaining clear brand recognition and consistent communication across different pack sizes.",
+          "heading": "Challenge"
+        },
+        {
+          "body": "Build a recognizable and engaging packaging system that enhances product differentiation, strengthens visual appeal, and reinforces Diamond Milk's identity within its flavored milk portfolio.",
+          "heading": "Objective"
+        },
+        {
+          "body": "Established a character-led design direction combining vibrant pink and purple tones, rainbow elements, expressive typography, and playful product illustrations. Developed a scalable visual hierarchy adaptable to 125 ml and 200 ml formats, ensuring the brand, flavor identity, and nutritional information remain clearly communicated.",
+          "heading": "Creative Strategy"
+        },
+        {
+          "body": "Developed a cohesive packaging identity across two product formats, supported by a consistent visual direction for product storytelling and lifestyle applications. The design system balances playful brand expression with structured packaging communication and strong shelf recognition.",
+          "heading": "Outcome"
+        }
+      ],
+      "published": true
     },
     {
       "title": "Diamond UHT Milk 200ml — Variant Packaging Extension",
