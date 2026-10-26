@@ -357,7 +357,7 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
 .featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .featured-card{display:block;appearance:none;border:0;text-align:left;background:transparent;color:inherit;padding:0;cursor:pointer;font:inherit;min-width:0}
 .featured-card-art{display:block;aspect-ratio:3/4;background:#26251e;overflow:hidden;border-radius:10px;position:relative}
-.featured-card-art img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.featured-card-placeholder{display:flex;align-items:center;justify-content:center;padding:28px;background:linear-gradient(145deg,#26251e,#13130e);color:#d7d1c3;font:500 clamp(22px,2.5vw,34px)/1.2 var(--font-display);text-align:center}.featured-card-art img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .featured-card:hover img,.featured-card:focus-visible img{transform:scale(1.045)}
 .featured-card-art::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.38));pointer-events:none}
 .featured-card-index{position:absolute;left:18px;top:18px;z-index:1;background:#11110ddd;color:#fff;border-radius:25px;padding:5px 12px;font:11px var(--font-mono)}
@@ -610,6 +610,111 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
     } catch (error) { console.warn('Website text settings unavailable; using built-in defaults', error); }
   }
   loadSiteContent();
+
+  // V4.1: CMS-driven featured covers and gallery navigation.
+  const featuredSection = document.getElementById('featuredCreative');
+  const featuredGrid = document.getElementById('featuredGrid');
+  const featuredDetail = document.getElementById('featuredDetail');
+  const featuredArtViewer = document.getElementById('featuredArtViewer');
+  let featuredLastFocus = null;
+  let featuredGallery = [];
+  let featuredArtIndex = 0;
+  function featuredImageURL(value) {
+    if (typeof value !== 'string' || !value.trim()) return '';
+    const v = value.trim();
+    if (/^https:\/\//i.test(v)) return v;
+    if (v.startsWith('//') || /^[a-z]+:/i.test(v)) return '';
+    return '/' + v.replace(/^\/+/, '');
+  }
+  function gallerySources(items) {
+    return (Array.isArray(items) ? items : []).map(x => featuredImageURL(typeof x === 'string' ? x : x && x.image)).filter(Boolean);
+  }
+  function closeFeaturedArt() {
+    featuredArtViewer.classList.remove('open');
+    featuredArtViewer.setAttribute('aria-hidden','true');
+    document.getElementById('featuredDetailGrid').querySelector('button')?.focus();
+  }
+  function showFeaturedArt(index) {
+    if (!featuredGallery.length) return;
+    featuredArtIndex = (index + featuredGallery.length) % featuredGallery.length;
+    document.getElementById('favImage').src = featuredGallery[featuredArtIndex];
+    document.getElementById('favImage').alt = 'Artwork ' + (featuredArtIndex + 1);
+    document.getElementById('favCount').textContent = (featuredArtIndex + 1) + ' / ' + featuredGallery.length;
+    document.getElementById('favPrev').hidden = featuredGallery.length < 2;
+    document.getElementById('favNext').hidden = featuredGallery.length < 2;
+  }
+  function openFeaturedArt(index) {
+    showFeaturedArt(index);
+    featuredArtViewer.classList.add('open');
+    featuredArtViewer.setAttribute('aria-hidden','false');
+    document.getElementById('favClose').focus();
+  }
+  function closeFeaturedDetail() {
+    closeFeaturedArt();
+    featuredDetail.classList.remove('open');
+    featuredDetail.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    featuredLastFocus?.focus();
+  }
+  function openFeaturedDetail(entry, num) {
+    featuredLastFocus = document.activeElement;
+    document.getElementById('featuredDetailEyebrow').textContent = 'Creative Discipline / ' + String(num + 1).padStart(2,'0');
+    document.getElementById('featuredDetailTitle').textContent = entry.title || 'Creative Work';
+    document.getElementById('featuredDetailDesc').textContent = entry.description || entry.subtitle || '';
+    const visual = document.getElementById('featuredDetailGrid');
+    visual.replaceChildren();
+    featuredGallery = gallerySources(entry.gallery);
+    if (!featuredGallery.length && featuredImageURL(entry.cover)) featuredGallery = [featuredImageURL(entry.cover)];
+    featuredGallery.forEach((src, i) => {
+      const btn = document.createElement('button'); btn.type='button'; btn.className='featured-detail-image';
+      btn.setAttribute('aria-label','Open artwork '+(i+1)+' fullscreen');
+      const img=document.createElement('img'); img.src=src; img.alt=(entry.title || 'Artwork')+' '+(i+1); img.loading='lazy';
+      btn.append(img);btn.addEventListener('click',()=>openFeaturedArt(i)); visual.append(btn);
+    });
+    if (!featuredGallery.length) {const note=document.createElement('p');note.textContent='Gallery images can be added from Featured Creative Works in the CMS.';visual.append(note);}
+    const story = document.getElementById('featuredDetailStory');
+    story.innerHTML = richBlocks(entry.story || '');
+    document.getElementById('featuredDetailNarrative').hidden = !(entry.story || '').trim();
+    featuredDetail.classList.add('open');
+    featuredDetail.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    document.getElementById('featuredClose').focus();
+  }
+  async function loadFeatured() {
+    try {
+      const res = await fetch('/content/featured.json', {cache:'no-store'});
+      if (!res.ok) throw new Error('HTTP '+res.status);
+      const data = await res.json();
+      const items = (Array.isArray(data.features) ? data.features : []).filter(x => x && x.published !== false);
+      featuredGrid.replaceChildren();
+      items.forEach((entry,index) => {
+        const card=document.createElement('button');card.type='button';card.className='featured-card';
+        const art=document.createElement('span');art.className='featured-card-art';
+        const src=featuredImageURL(entry.cover);
+        if(src) {const img=document.createElement('img');img.src=src;img.alt=entry.title||'Featured artwork';img.loading='lazy';art.append(img);}
+        else {art.classList.add('featured-card-placeholder'); const marker=document.createElement('span');marker.textContent=entry.title||'Featured Work';art.append(marker);}
+        const n=document.createElement('span');n.className='featured-card-index';n.textContent=String(index+1).padStart(2,'0');art.append(n);
+        const title=document.createElement('span');title.className='featured-card-title';title.textContent=entry.title||'Creative Work';
+        const meta=document.createElement('span');meta.className='featured-card-meta';meta.textContent=entry.subtitle||'Explore gallery';
+        card.append(art,title,meta);card.addEventListener('click',()=>openFeaturedDetail(entry,index));featuredGrid.append(card);
+      });
+      featuredSection.hidden = items.length === 0;
+    } catch (err) { console.warn('Featured gallery data could not load',err); }
+  }
+  document.getElementById('featuredBack').addEventListener('click',closeFeaturedDetail);
+  document.getElementById('featuredClose').addEventListener('click',closeFeaturedDetail);
+  document.getElementById('favClose').addEventListener('click',closeFeaturedArt);
+  document.getElementById('favPrev').addEventListener('click',()=>showFeaturedArt(featuredArtIndex-1));
+  document.getElementById('favNext').addEventListener('click',()=>showFeaturedArt(featuredArtIndex+1));
+  featuredArtViewer.addEventListener('click',e=>{if(e.target===featuredArtViewer)closeFeaturedArt();});
+  document.addEventListener('keydown',e=>{
+    if(featuredArtViewer.classList.contains('open')) {
+      if(e.key==='Escape'){e.preventDefault();closeFeaturedArt();}
+      if(e.key==='ArrowLeft'){e.preventDefault();showFeaturedArt(featuredArtIndex-1);}
+      if(e.key==='ArrowRight'){e.preventDefault();showFeaturedArt(featuredArtIndex+1);}
+    } else if(featuredDetail.classList.contains('open') && e.key==='Escape') {e.preventDefault();closeFeaturedDetail();}
+  });
+  loadFeatured();
 
   // Project content is managed from /admin and stored in /content/projects.json.
   let projects = [];
