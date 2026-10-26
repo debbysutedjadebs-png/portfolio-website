@@ -44,14 +44,32 @@
       "published": false
     },
     {
-      "title": "Fresh Milk Integrated Campaign",
-      "cat": "Campaign · 360 Activation",
-      "year": "2026",
+      "title": "Integrated Campaign Strategy, Creative Direction & Consumer Experience.",
+      "cat": "Retail Activation",
+      "year": "2025",
       "company": "Diamond Cold Storage",
       "images": [
-        "images/fresh-milk-integrated-campaign-1.jpg"
+        "/images/fresh-milk.jpg"
       ],
-      "desc": "I translated the marketing strategy and campaign message into one consistent visual system across key visuals, POSM, retail displays, consumer gimmicks, and branded merchandise. Each touchpoint was designed to strengthen shelf visibility, reinforce the product benefit, and create a more connected consumer experience."
+      "desc": "Directed the creative development of an integrated Diamond Fresh Milk campaign, translating marketing strategy into a cohesive brand experience across key visuals, retail environments, consumer activations, and branded merchandise. Established a unified visual direction to strengthen product positioning, enhance retail visibility, and deliver consistent brand communication across multiple consumer touchpoints.",
+      "sections": [
+        {
+          "heading": "Challenge",
+          "body": "Translate Diamond Fresh Milk's nutritional positioning into an engaging and consistent campaign experience across diverse consumer touchpoints, while ensuring strong brand recognition and clear product messaging."
+        },
+        {
+          "body": "Develop an integrated visual communication ecosystem that reinforces nutritional benefits, strengthens retail visibility, and encourages consumer interaction through both physical and experiential brand activations.",
+          "heading": "Objective"
+        },
+        {
+          "body": "Established a unified campaign identity built around the \"Nutrisi Lengkap, Proses Tepat\" proposition. Extended the creative direction across campaign key visuals, branded chillers, retail displays, interactive fitness activations, and promotional merchandise to maintain a cohesive brand experience throughout the consumer journey.",
+          "heading": "Creative Strategy"
+        },
+        {
+          "body": "Developed a comprehensive campaign visual system connecting brand awareness, in-store visibility, experiential engagement, and branded merchandise. The integrated approach provided a consistent creative framework across multiple channels and consumer touchpoints.",
+          "heading": " Outcome"
+        }
+      ]
     },
     {
       "title": "Diamond UHT Milk — New Nutritional Claim Design",
