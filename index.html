@@ -478,6 +478,54 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
 }
 @media (prefers-reduced-motion: reduce) { .featured-detail-grid .featured-detail-image img {transition:none;} }
 
+
+/* V4.4 — Discreet copyright overlays and casual-save deterrents */
+.featured-card-art::before,
+.featured-detail-image::before,
+.modal-cover:has(img)::after {
+  content: "© Deby Suteja";
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
+  background: rgba(10, 10, 10, .62);
+  color: rgba(255,255,255,.93);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font: 500 10px/1.2 var(--font-mono, monospace);
+  letter-spacing: .02em;
+  pointer-events: none;
+  user-select: none;
+}
+.featured-detail-image::before { inset: auto 10px 10px auto; }
+.featured-card-art::before { inset: auto 12px 12px auto; }
+.art-lightbox::after,
+.featured-art-viewer::after {
+  content: "© Deby Suteja";
+  position: absolute;
+  right: clamp(20px,5vw,84px);
+  bottom: clamp(36px,7vh,85px);
+  z-index: 3;
+  color: #fff;
+  background: rgba(0,0,0,.60);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 4px;
+  font: 500 11px/1.2 var(--font-mono,monospace);
+  padding: 7px 10px;
+  pointer-events: none;
+  user-select: none;
+}
+.featured-card-art img,
+.featured-detail-image img,
+.modal-gallery img,
+.art-lightbox img,
+.featured-art-viewer img { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; }
+@media(max-width: 520px) {
+ .featured-card-art::before, .featured-detail-image::before, .modal-cover:has(img)::after {font-size: 9px; padding: 4px 6px; right: 7px; bottom: 7px;}
+ .art-lightbox::after,.featured-art-viewer::after{right: 16px;bottom: 60px;font-size: 9px;}
+}
+
 </style>
 </head>
 <body>
@@ -697,6 +745,17 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
     } catch (error) { console.warn('Website text settings unavailable; using built-in defaults', error); }
   }
   loadSiteContent();
+
+
+  // V4.4: discourage casual saving of displayed portfolio artwork.
+  // This is browser UI protection only; publicly served images remain retrievable.
+  const artworkSelector = '.featured-card-art img, .featured-detail-image img, .modal-gallery img, .art-lightbox img, .featured-art-viewer img';
+  document.addEventListener('contextmenu', (event) => {
+    if (event.target instanceof Element && event.target.matches(artworkSelector)) event.preventDefault();
+  });
+  document.addEventListener('dragstart', (event) => {
+    if (event.target instanceof Element && event.target.matches(artworkSelector)) event.preventDefault();
+  });
 
   // V4.1: CMS-driven featured covers and gallery navigation.
   const featuredSection = document.getElementById('featuredCreative');
