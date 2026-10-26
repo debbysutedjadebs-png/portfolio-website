@@ -1,0 +1,55 @@
+{
+  "site_name": "Deby Suteja",
+  "page_title": "Deby Suteja — Creative Strategy & Brand Design",
+  "greeting": "Halo, saya",
+  "display_name": "Deby",
+  "job_location": "Graphic Design Manager, Jakarta",
+  "hero_headline": "Creative strategy & brand direction,",
+  "hero_highlight": "diterjemahkan jadi visual yang bekerja di rak.",
+  "current_company": "PT Kapal Api Global",
+  "experience_summary": "10+ tahun",
+  "specialties": "Packaging · POSM · Campaign",
+  "work_heading": "Selected Work",
+  "about_heading": "About",
+  "about_intro": "Creative professional with 10+ years of experience in visual communication and creative design, including 4+ years focused on FMCG/CPG campaign assets, POSM, packaging support, and brand communication — menerjemahkan objektif marketing jadi creative direction, campaign concept, dan visual system yang konsisten lintas retail, packaging, POSM, dan digital.",
+  "profile_image": "/images/foto-profil.jpg",
+  "experience": [
+    {
+      "period": "Jan 2026 – Present",
+      "role": "Graphic Design Manager",
+      "company": "PT. Kapal Api Group",
+      "description": "Memimpin creative design direction dan visual communication development untuk brand communication, marketing campaign, dan cross-channel creative execution."
+    },
+    {
+      "period": "Sep 2022 – 2025",
+      "role": "Graphic Designer Supervisor",
+      "company": "Diamond Cold Storage",
+      "description": "Mengawasi creative development dan visual execution untuk Diamond dan brand FMCG terkait — campaign visual, POSM, packaging update, dan digital communication asset."
+    },
+    {
+      "period": "Mar 2021 – Sep 2022",
+      "role": "Graphic Designer",
+      "company": "Brandztory Digital Creative Agency",
+      "description": "Mengembangkan client-based branding, social media campaign, digital content, creative proposal, moodboard, dan konsep photoshoot."
+    },
+    {
+      "period": "Dec 2016 – Dec 2020",
+      "role": "Junior – Senior Graphic Designer",
+      "company": "PT. Ksatria Palu Gada",
+      "description": "Mendukung branding, promotional design, layout development, internal communication material, dan production-ready creative asset."
+    }
+  ],
+  "skills": [
+    "Packaging Design",
+    "Creative Strategy",
+    "Brand Campaign Direction",
+    "POSM & Retail Activation",
+    "Brand Communication"
+  ],
+  "contact_heading": "Ngobrol soal",
+  "contact_highlight": "project?",
+  "contact_location": "Jakarta, Indonesia",
+  "linkedin": "https://www.linkedin.com/in/debysuteja/",
+  "behance": "https://www.behance.net/debbysutedja",
+  "instagram": "https://www.instagram.com/debysuteja/"
+}
