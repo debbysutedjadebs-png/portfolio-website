@@ -348,6 +348,49 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
  .modal-body .leadership-narrative { grid-template-columns:1fr; gap:12px; }
 }
 
+
+/* V4 FEATURED CREATIVE DISCIPLINES — additive only */
+.featured-work{padding:74px 0 34px;border-top:0}
+.featured-intro{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:32px}
+.featured-title{font:500 clamp(34px,4vw,56px)/1.1 var(--font-display);letter-spacing:-.035em;margin:0;color:var(--text)}
+.featured-subtitle{max-width:400px;font-size:15px;color:var(--body-soft);margin:10px 0 0}
+.featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.featured-card{display:block;appearance:none;border:0;text-align:left;background:transparent;color:inherit;padding:0;cursor:pointer;font:inherit;min-width:0}
+.featured-card-art{display:block;aspect-ratio:3/4;background:#26251e;overflow:hidden;border-radius:10px;position:relative}
+.featured-card-art img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.featured-card:hover img,.featured-card:focus-visible img{transform:scale(1.045)}
+.featured-card-art::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.38));pointer-events:none}
+.featured-card-index{position:absolute;left:18px;top:18px;z-index:1;background:#11110ddd;color:#fff;border-radius:25px;padding:5px 12px;font:11px var(--font-mono)}
+.featured-card-title{font:500 clamp(20px,2vw,29px)/1.2 var(--font-display);display:block;margin:18px 0 6px;color:var(--text)}
+.featured-card-meta{display:block;color:var(--body-soft);font:12px var(--font-mono)}
+.featured-card:focus-visible{outline:3px solid var(--accent);outline-offset:6px;border-radius:5px}
+.featured-detail{position:fixed;inset:0;background:var(--paper);z-index:900;overflow:auto;display:none;overscroll-behavior:contain}
+.featured-detail.open{display:block}
+.featured-detail-inner{max-width:1260px;margin:auto;padding:32px clamp(20px,4vw,55px) 120px}
+.featured-detail-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:24px;gap:20px}
+.featured-back,.featured-detail-close{font:12px var(--font-mono);color:var(--text);background:none;border:1px solid var(--line);border-radius:30px;padding:12px 18px;cursor:pointer}
+.featured-detail-hero{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:end;padding:78px 0 46px}
+.featured-eyebrow{color:var(--accent);font:12px var(--font-mono);letter-spacing:.12em;text-transform:uppercase}
+.featured-detail h2{font:500 clamp(45px,6vw,88px)/1.04 var(--font-display);letter-spacing:-.045em;margin:17px 0;color:var(--text)}
+.featured-detail-desc{color:var(--body-soft);font-size:clamp(16px,1.4vw,20px);line-height:1.7;max-width:65ch}
+.featured-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.featured-detail-image{appearance:none;background:#24231e;border:0;padding:0;overflow:hidden;border-radius:9px;cursor:zoom-in;display:block;min-width:0}
+.featured-detail-image img{width:100%;height:auto;display:block;transition:transform .3s}
+.featured-detail-image:hover img{transform:scale(1.025)}
+.featured-detail-image:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.featured-detail-narrative{border-top:1px solid var(--line);margin-top:56px;padding-top:35px;display:grid;grid-template-columns:220px 1fr;gap:35px}
+.featured-detail-narrative h3{color:var(--accent);font:600 12px var(--font-mono);text-transform:uppercase;letter-spacing:.1em}
+.featured-rich{font-size:clamp(16px,1.4vw,19px);line-height:1.75;color:var(--body-soft)}
+.featured-rich p{margin:0 0 1.1em}.featured-rich strong,.featured-rich h2,.featured-rich h3{color:var(--text)}.featured-rich em{font-style:italic}
+.featured-rich a{color:var(--accent)}.featured-rich li{margin:.35em 0}
+.featured-art-viewer{position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;padding:65px 60px}
+.featured-art-viewer.open{display:flex}.featured-art-viewer img{max-height:calc(100dvh - 130px);max-width:100%;object-fit:contain}
+.featured-art-viewer button{position:absolute;border:1px solid #777;background:#1a1a1a;color:white;border-radius:50%;width:46px;height:46px;cursor:pointer;font-size:24px}
+.fav-close{right:24px;top:22px}.fav-prev{left:12px;top:50%}.fav-next{right:12px;top:50%}
+.fav-count{position:absolute;top:34px;left:28px;color:white;font:12px var(--font-mono)}
+@media(max-width:760px){.featured-intro{display:block}.featured-grid{grid-template-columns:1fr 1fr;gap:14px}.featured-detail-hero{grid-template-columns:1fr;gap:12px;padding:45px 0 28px}.featured-detail-narrative{grid-template-columns:1fr;gap:8px}.featured-art-viewer{padding:65px 12px}.featured-detail-grid{gap:10px}}
+@media(max-width:480px){.featured-grid{grid-template-columns:1fr}.featured-card-art{aspect-ratio:4/3}.featured-work{padding-top:46px}.featured-detail-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -383,6 +426,14 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
 </div>
 
 <div class="wrap">
+
+
+  <!-- New additive CMS-driven featured section; existing Selected Work remains unchanged -->
+  <section class="featured-work" id="featuredCreative" hidden aria-label="Featured creative disciplines">
+    <div class="section-head"><span class="idx">01</span><h2>Creative Disciplines</h2></div>
+    <div class="featured-intro"><div><h3 class="featured-title">Explore My Creative Work</h3><p class="featured-subtitle">A curated selection of visual storytelling, brand systems, and creative experiences.</p></div></div>
+    <div class="featured-grid" id="featuredGrid"></div>
+  </section>
 
   <section id="work" style="border-top:none;">
     <div class="section-head"><span class="idx">00</span><h2 data-site="work_heading">Selected Work</h2></div>
@@ -492,6 +543,19 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
   <img id="lbImage" alt="" />
   <button type="button" class="lb-next" id="lbNext" aria-label="Next image">&#8250;</button>
   <div class="lb-caption" id="lbCaption"></div>
+</div>
+
+
+<div class="featured-detail" id="featuredDetail" role="dialog" aria-modal="true" aria-labelledby="featuredDetailTitle" aria-hidden="true">
+  <div class="featured-detail-inner">
+    <div class="featured-detail-top"><button class="featured-back" id="featuredBack" type="button">← Back to Creative Work</button><button class="featured-detail-close" id="featuredClose" type="button">Close ✕</button></div>
+    <div class="featured-detail-hero"><div><span class="featured-eyebrow" id="featuredDetailEyebrow">Creative Discipline</span><h2 id="featuredDetailTitle"></h2></div><p class="featured-detail-desc" id="featuredDetailDesc"></p></div>
+    <div class="featured-detail-grid" id="featuredDetailGrid"></div>
+    <div class="featured-detail-narrative" id="featuredDetailNarrative" hidden><h3>Creative Direction & Approach</h3><div class="featured-rich" id="featuredDetailStory"></div></div>
+  </div>
+</div>
+<div class="featured-art-viewer" id="featuredArtViewer" role="dialog" aria-modal="true" aria-label="Fullscreen featured artwork" aria-hidden="true">
+  <span class="fav-count" id="favCount"></span><button type="button" class="fav-close" id="favClose" aria-label="Close image">×</button><button type="button" class="fav-prev" id="favPrev" aria-label="Previous artwork">‹</button><img id="favImage" alt=""><button type="button" class="fav-next" id="favNext" aria-label="Next artwork">›</button>
 </div>
 
 <script>
