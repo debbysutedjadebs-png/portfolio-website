@@ -2,7 +2,7 @@
 # GitHub memerlukan OAuth proxy tambahan; lihat PANDUAN-SETUP.md.
 backend:
   name: github
-  repo: GANTI_USERNAME/portfolio-website
+  repo: debbysutedjadebs-png/portfolio-website
   branch: main
   base_url: https://GANTI_OAUTH_WORKER.workers.dev
   auth_endpoint: auth
