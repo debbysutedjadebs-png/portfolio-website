@@ -69,7 +69,16 @@ collections:
               - {label: Kategori, name: cat, widget: select, options: ["Packaging Design", "Key Visual & POSM", "Retail Activation", "Brand Campaign", "Creative Direction", "Internal Branding", "Other"], allow_add: true}
               - {label: Tahun, name: year, widget: string}
               - {label: Perusahaan / Brand, name: company, widget: string}
-              - {label: Deskripsi / Case Study, name: desc, widget: text}
+              - {label: Deskripsi Lama / Ringkasan (fallback untuk project lama), name: desc, widget: text, required: false}
+              - label: Section Case Study (judul bebas, bisa ditambah & diurutkan)
+                name: sections
+                widget: list
+                required: false
+                collapsed: true
+                summary: '{{fields.heading}}'
+                fields:
+                  - {label: Judul Section (bebas), name: heading, widget: string, required: false}
+                  - {label: Isi Section, name: body, widget: text, required: false}
               - label: Galeri Gambar
                 name: images
                 widget: list
