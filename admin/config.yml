@@ -24,12 +24,12 @@ collections:
           - {label: Nama Website, name: site_name, widget: string}
           - {label: Judul Browser / SEO, name: page_title, widget: string}
           - {label: Sapaan di Homepage, name: greeting, widget: string}
-          - {label: Nama yang Ditampilkan, name: display_name, widget: string}
-          - {label: Jabatan dan Lokasi, name: job_location, widget: string}
+          - {label: Display Name, name: display_name, widget: string}
+          - {label: Position & Location, name: job_location, widget: string}
           - {label: Headline Utama, name: hero_headline, widget: string}
           - {label: Headline Highlight, name: hero_highlight, widget: string}
           - {label: Current Company, name: current_company, widget: string}
-          - {label: Ringkasan Pengalaman, name: experience_summary, widget: string}
+          - {label: Professional Experience, name: experience_summary, widget: string}
           - {label: Expertise, name: specialties, widget: string}
           - {label: Judul Section Work, name: work_heading, widget: string}
           - {label: Judul Section About, name: about_heading, widget: string}
