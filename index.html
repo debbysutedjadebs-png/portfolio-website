@@ -261,6 +261,21 @@
   .art-lightbox .lb-caption { position: absolute; bottom: 18px; left: 16px; right: 16px; color: #d8d8d8; text-align: center; font: 13px var(--font-mono); }
   .modal-gallery img { cursor: zoom-in; }
   @media (max-width: 700px) { .art-lightbox { padding: 62px 12px 74px; } .art-lightbox img { max-height: calc(100dvh - 150px); } .art-lightbox .lb-prev { left: 8px; } .art-lightbox .lb-next { right: 8px; } .art-lightbox button { width: 38px; height: 38px; font-size: 23px; } }
+
+/* Strategic Design Leadership / V-C: scoped, additive styles */
+.modal-body .leadership-kicker{font:600 11px var(--font-mono);letter-spacing:.17em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.modal-body .leadership-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:22px 0 36px}
+.modal-body .leadership-fact{padding:20px 18px 22px 0;min-width:0}
+.modal-body .leadership-fact+.leadership-fact{border-left:1px solid var(--line);padding-left:22px}
+.modal-body .leadership-fact dt{font:600 10px var(--font-mono);text-transform:uppercase;letter-spacing:.14em;color:var(--body-faint);margin-bottom:10px}
+.modal-body .leadership-fact dd{margin:0;font:500 clamp(14px,1.2vw,18px)/1.4 var(--font-body);color:var(--text);overflow-wrap:anywhere}
+.modal-body .leadership-narrative{display:grid;grid-template-columns:minmax(140px,240px) minmax(0,1fr);gap:28px;padding:30px 0;border-top:1px solid var(--line)}
+.modal-body .leadership-narrative h4{margin:0;color:var(--accent);font:600 11px var(--font-mono);letter-spacing:.14em;text-transform:uppercase}
+.modal-body .leadership-narrative p{margin:0;max-width:860px;white-space:pre-line;color:var(--body-soft);font-size:clamp(16px,1.35vw,19px);line-height:1.75}
+.modal-body .leadership-narrative.is-impact{background:linear-gradient(90deg,rgba(255,90,54,.045),transparent);border-radius:12px;padding-inline:20px}
+@media(max-width:800px){.modal-body .leadership-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.modal-body .leadership-fact:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--line)}.modal-body .leadership-fact:nth-child(4){border-top:1px solid var(--line)}.modal-body .leadership-narrative{grid-template-columns:1fr;gap:10px}}
+@media(max-width:420px){.modal-body .leadership-facts{grid-template-columns:1fr}.modal-body .leadership-fact+.leadership-fact{border-left:0;padding-left:0;border-top:1px solid var(--line)}}
+
 </style>
 </head>
 <body>
@@ -392,6 +407,7 @@
       <div class="cat-row"><span id="modalCat"></span><span class="dot">·</span><span id="modalYear"></span></div>
       <h3 id="modalTitle"></h3>
       <p class="co-line" id="modalCo"></p>
+      <div id="modalLeadership" hidden></div>
       <div class="desc" id="modalDesc"></div>
     </div>
   </div>
@@ -654,6 +670,49 @@
     });
   }
 
+
+  // Strategic Design Leadership: optional CMS fields, safe DOM rendering only.
+  function renderLeadership(project) {
+    const root = document.getElementById('modalLeadership');
+    root.replaceChildren();
+    const facts = [
+      ['My Role', project.role],
+      ['Scope', project.scope],
+      ['Collaboration', project.collaboration],
+      ['Project Impact', project.impact_summary]
+    ].filter(([, value]) => typeof value === 'string' && value.trim());
+    const narratives = [
+      ['Strategic Context', project.strategic_context],
+      ['Creative Leadership', project.creative_leadership],
+      ['Decisions & Direction', project.key_decisions],
+      ['Outcomes & Learning', project.project_impact]
+    ].filter(([, value]) => typeof value === 'string' && value.trim());
+    root.hidden = facts.length === 0 && narratives.length === 0;
+    if (root.hidden) return;
+    const eyebrow = document.createElement('p');
+    eyebrow.className = 'leadership-kicker';
+    eyebrow.textContent = 'Leadership & Project Context';
+    root.appendChild(eyebrow);
+    if (facts.length) {
+      const dl = document.createElement('dl');
+      dl.className = 'leadership-facts';
+      for (const [label, value] of facts) {
+        const div = document.createElement('div'); div.className = 'leadership-fact';
+        const dt = document.createElement('dt'); dt.textContent = label;
+        const dd = document.createElement('dd'); dd.textContent = value;
+        div.append(dt, dd); dl.appendChild(div);
+      }
+      root.appendChild(dl);
+    }
+    for (const [label,value] of narratives) {
+      const div = document.createElement('div');
+      div.className = 'leadership-narrative' + (label === 'Outcomes & Learning' ? ' is-impact' : '');
+      const h = document.createElement('h4'); h.textContent = label;
+      const p = document.createElement('p'); p.textContent = value;
+      div.append(h,p); root.appendChild(div);
+    }
+  }
+
   function openModal(i) {
     const p = projects[i];
     if (!p) return;
@@ -680,6 +739,7 @@
     document.getElementById("modalYear").textContent = p.year;
     document.getElementById("modalTitle").textContent = p.title;
     document.getElementById("modalCo").textContent = p.company;
+    renderLeadership(p);
     renderProjectDescription(document.getElementById("modalDesc"), p.desc, p.sections);
     overlay.classList.add("open");
     overlay.setAttribute("aria-hidden", "false");
