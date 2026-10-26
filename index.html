@@ -247,6 +247,20 @@
     .modal-body .desc .project-section { padding-top: 22px; margin-top: 22px; }
   }
 
+
+  /* Fullscreen project artwork viewer */
+  .art-lightbox { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; background: rgba(4,5,8,.97); padding: 60px 68px; }
+  .art-lightbox.open { display: flex; }
+  .art-lightbox img { display: block; max-width: 100%; max-height: calc(100dvh - 120px); width: auto; height: auto; object-fit: contain; box-shadow: 0 18px 65px rgba(0,0,0,.35); }
+  .art-lightbox button { position: absolute; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(25,25,25,.82); color: white; width: 48px; height: 48px; font-size: 27px; cursor: pointer; display: grid; place-items: center; }
+  .art-lightbox button:hover, .art-lightbox button:focus-visible { border-color: #fff; background: #353535; }
+  .art-lightbox .lb-close { top: 20px; right: 22px; }
+  .art-lightbox .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+  .art-lightbox .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+  .art-lightbox .lb-counter { position: absolute; top: 32px; left: 24px; color: #fff; font: 13px var(--font-mono); }
+  .art-lightbox .lb-caption { position: absolute; bottom: 18px; left: 16px; right: 16px; color: #d8d8d8; text-align: center; font: 13px var(--font-mono); }
+  .modal-gallery img { cursor: zoom-in; }
+  @media (max-width: 700px) { .art-lightbox { padding: 62px 12px 74px; } .art-lightbox img { max-height: calc(100dvh - 150px); } .art-lightbox .lb-prev { left: 8px; } .art-lightbox .lb-next { right: 8px; } .art-lightbox button { width: 38px; height: 38px; font-size: 23px; } }
 </style>
 </head>
 <body>
@@ -383,6 +397,15 @@
   </div>
 </div>
 
+<div class="art-lightbox" id="artLightbox" role="dialog" aria-modal="true" aria-label="Fullscreen project artwork" aria-hidden="true">
+  <span class="lb-counter" id="lbCounter"></span>
+  <button type="button" class="lb-close" id="lbClose" aria-label="Close fullscreen artwork">&times;</button>
+  <button type="button" class="lb-prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+  <img id="lbImage" alt="" />
+  <button type="button" class="lb-next" id="lbNext" aria-label="Next image">&#8250;</button>
+  <div class="lb-caption" id="lbCaption"></div>
+</div>
+
 <script>
   // Text and profile settings are managed from /admin → Website Content.
   async function loadSiteContent() {
@@ -511,6 +534,54 @@
   const countEl = document.getElementById("galleryCount");
   let currentCount = 1;
   let previouslyFocused = null;
+  let activeProject = null;
+  let lightboxIndex = 0;
+  let lightboxReturnFocus = null;
+  const lightbox = document.getElementById('artLightbox');
+  const lbImage = document.getElementById('lbImage');
+  const lbCounter = document.getElementById('lbCounter');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  const lbClose = document.getElementById('lbClose');
+  function showLightboxImage(index) {
+    const images = activeProject?.images || [];
+    if (!images.length) return;
+    lightboxIndex = (index + images.length) % images.length;
+    lbImage.src = imagePath(images[lightboxIndex]);
+    lbImage.alt = `${activeProject.title || 'Project'} — image ${lightboxIndex + 1}`;
+    lbCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
+    lbCaption.textContent = activeProject.title || 'Project artwork';
+    lbPrev.hidden = images.length < 2;
+    lbNext.hidden = images.length < 2;
+  }
+  function openLightbox(index, trigger) {
+    if (!activeProject?.images?.length) return;
+    lightboxReturnFocus = trigger || document.activeElement;
+    showLightboxImage(index);
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    overlay.setAttribute('aria-hidden', 'true');
+    lbClose.focus();
+  }
+  function closeLightbox() {
+    if (!lightbox.classList.contains('open')) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-hidden', 'false');
+    lbImage.removeAttribute('src');
+    if (lightboxReturnFocus?.isConnected) lightboxReturnFocus.focus();
+  }
+  galleryEl.addEventListener('click', (event) => {
+    const target = event.target.closest('img');
+    if (!target) return;
+    openLightbox([...galleryEl.querySelectorAll('img')].indexOf(target), target);
+  });
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => showLightboxImage(lightboxIndex - 1));
+  lbNext.addEventListener('click', () => showLightboxImage(lightboxIndex + 1));
+  lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+
 
   // Build structured case-study sections from the existing plain-text CMS description.
   // Text stays safe: only DOM textContent is used (never untrusted innerHTML).
@@ -587,6 +658,7 @@
     const p = projects[i];
     if (!p) return;
     previouslyFocused = document.activeElement;
+    activeProject = p;
     hoverPreview.classList.remove("show");
     galleryEl.innerHTML = "";
     (p.images || []).forEach((src, index) => {
@@ -594,6 +666,10 @@
       im.src = imagePath(src);
       im.alt = `${p.title || "Project"} — image ${index + 1}`;
       im.loading = index ? "lazy" : "eager";
+      im.tabIndex = 0;
+      im.setAttribute("role", "button");
+      im.setAttribute("aria-label", `View fullscreen ${im.alt}`);
+      im.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openLightbox(index, im); } });
       galleryEl.appendChild(im);
     });
     galleryEl.scrollLeft = 0;
@@ -616,6 +692,7 @@
     countEl.textContent = idx + " / " + currentCount;
   });
   function closeModal() {
+    closeLightbox();
     overlay.classList.remove("open");
     overlay.setAttribute("aria-hidden", "true");
     if(previouslyFocused?.isConnected) previouslyFocused.focus();
@@ -624,6 +701,13 @@
   document.getElementById("modalClose").addEventListener("click", closeModal);
   overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
   document.addEventListener("keydown", (e) => {
+    if (lightbox.classList.contains('open')) {
+      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); showLightboxImage(lightboxIndex - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); showLightboxImage(lightboxIndex + 1); }
+      if (e.key === 'Tab') { e.preventDefault(); const controls = [lbClose, ...(lbPrev.hidden ? [] : [lbPrev, lbNext])]; const index = controls.indexOf(document.activeElement); controls[(index + (e.shiftKey ? controls.length - 1 : 1)) % controls.length].focus(); }
+      return;
+    }
     if (e.key === "Escape" && overlay.classList.contains('open')) closeModal();
     if (e.key === "Tab" && overlay.classList.contains('open')) {
       // Keep keyboard focus in the dialog until it closes.
