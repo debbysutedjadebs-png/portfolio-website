@@ -208,6 +208,9 @@
   }
   :root[data-theme="dark"] .modal-body .desc .project-section h4 { color: #F1F1EA; }
   .modal-body .desc .project-section p { margin: 0; line-height: 1.75; }
+  .modal-body .desc .project-summary { padding: 0 0 22px; margin: 0 0 8px; border-bottom: 1px solid var(--line); }
+  .modal-body .desc .project-summary h4 { margin: 0 0 12px; color: var(--text); font-family: var(--font-display); font-size: 18px; font-weight: 700; line-height: 1.35; }
+  .modal-body .desc .project-summary p { margin: 0; line-height: 1.75; white-space: pre-line; }
   .modal-body .desc .project-intro { margin: 0 0 22px; }
   @media (max-width: 480px) {
     .modal-body .desc .project-section { margin-top: 20px; padding-top: 18px; }
@@ -483,6 +486,18 @@
   function renderProjectDescription(container, description, sections) {
     if (Array.isArray(sections) && sections.length) {
       container.replaceChildren();
+      // Always retain the CMS legacy description as a summary above custom sections.
+      const summary = String(description || "").trim();
+      if (summary) {
+        const intro = document.createElement("div");
+        intro.className = "project-summary";
+        const summaryTitle = document.createElement("h4");
+        summaryTitle.textContent = "Project Summary";
+        const summaryText = document.createElement("p");
+        summaryText.textContent = summary;
+        intro.append(summaryTitle, summaryText);
+        container.appendChild(intro);
+      }
       for (const item of sections) {
         if (!item || (!String(item.heading || "").trim() && !String(item.body || "").trim())) continue;
         const section = document.createElement("div");
