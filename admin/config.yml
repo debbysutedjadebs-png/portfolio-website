@@ -1,10 +1,11 @@
 # GANTI username dan repository GitHub sebelum login admin.
 # GitHub memerlukan OAuth proxy tambahan; lihat PANDUAN-SETUP.md.
+
 backend:
   name: github
   repo: debbysutedjadebs-png/portfolio-website
   branch: main
-  base_url: https://GANTI_OAUTH_WORKER.workers.dev
+  base_url: https://deby-portfolio-auth.hellodebbbeh.workers.dev
   auth_endpoint: auth
 
 media_folder: images
