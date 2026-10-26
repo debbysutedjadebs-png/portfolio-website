@@ -33,12 +33,20 @@
       "published": true
     },
     {
-      "title": "Campaign & POSM",
-      "subtitle": "Retail Activation & Brand Experiences",
-      "cover": "",
-      "description": "Integrated campaign concepts, key visuals, and in-store communication.",
-      "story": "",
-      "gallery": [],
+      "title": "Social Media Visual Editorial",
+      "subtitle": "Roti & Ragi — Building a Distinctive Artisan Bakery Brand",
+      "cover": "/images/social-media-rr1.jpg",
+      "description": "Developed an integrated brand direction for Roti & Ragi, positioning the artisan bakery around product authenticity, everyday accessibility, and a distinctive neighborhood identity.\n\nThe strategy connected packaging, retail presence, and digital storytelling into a cohesive brand system designed to strengthen differentiation, build consumer familiarity, and support recognition across physical and digital touchpoints.",
+      "story": "**Business Challenge**\n\nDifferentiate Roti & Ragi within a competitive bakery market while balancing artisanal credibility with an approachable, contemporary brand identity.\n\n**Strategic Direction**\n\nPositioned the brand as a modern neighborhood bakery where quality bread meets everyday lifestyle. Prioritized product authenticity, recognizable brand assets, and consistent communication to connect in-store experiences with digital consumer discovery.\n\n**Creative Leadership & Approach**\n\nEstablished three strategic creative priorities: a distinctive packaging architecture, a cohesive retail-to-digital identity, and lifestyle-led communication that makes artisanal products feel relevant to everyday consumption.\n\nThe approach created a unified brand framework designed to support consistent execution across packaging, storefront branding, social content, and digital discovery platforms.",
+      "gallery": [
+        "/images/sm-rr2.jpg",
+        "/images/rr30.jpg",
+        "/images/rr23.jpg",
+        "/images/rr22.jpg",
+        "/images/rr18.jpg",
+        "/images/rr28.jpg",
+        "/images/rr11.jpg"
+      ],
       "published": true
     }
   ]
