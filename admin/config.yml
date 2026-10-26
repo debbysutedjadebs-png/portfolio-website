@@ -69,16 +69,16 @@ collections:
               - {label: Kategori, name: cat, widget: select, options: ["Packaging Design", "Key Visual & POSM", "Retail Activation", "Brand Campaign", "Creative Direction", "Internal Branding", "Other"], allow_add: true}
               - {label: Tahun, name: year, widget: string}
               - {label: Perusahaan / Brand, name: company, widget: string}
-              - {label: Deskripsi Lama / Ringkasan (fallback untuk project lama), name: desc, widget: text, required: false}
+              - {label: Deskripsi Lama / Ringkasan (fallback untuk project lama), name: desc, widget: markdown, required: false}
               # Strategic Design Leadership — all optional; older projects stay valid.
               - {label: My Role, name: role, widget: string, required: false}
               - {label: Project Scope, name: scope, widget: string, required: false}
               - {label: Team & Collaboration, name: collaboration, widget: string, required: false}
               - {label: Impact Snapshot, name: impact_summary, widget: string, required: false}
-              - {label: Strategic Context, name: strategic_context, widget: text, required: false}
-              - {label: Creative Leadership, name: creative_leadership, widget: text, required: false}
-              - {label: Key Creative Decisions, name: key_decisions, widget: text, required: false}
-              - {label: Outcomes & Learning, name: project_impact, widget: text, required: false}
+              - {label: Strategic Context, name: strategic_context, widget: markdown, required: false}
+              - {label: Creative Leadership, name: creative_leadership, widget: markdown, required: false}
+              - {label: Key Creative Decisions, name: key_decisions, widget: markdown, required: false}
+              - {label: Outcomes & Learning, name: project_impact, widget: markdown, required: false}
               - label: Section Case Study (judul bebas, bisa ditambah & diurutkan)
                 name: sections
                 widget: list
@@ -87,7 +87,7 @@ collections:
                 summary: '{{fields.heading}}'
                 fields:
                   - {label: Judul Section (bebas), name: heading, widget: string, required: false}
-                  - {label: Isi Section, name: body, widget: text, required: false}
+                  - {label: Isi Section, name: body, widget: markdown, required: false}
               - label: Galeri Gambar
                 name: images
                 widget: list
