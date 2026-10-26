@@ -216,6 +216,37 @@
     .modal-body .desc .project-section { margin-top: 20px; padding-top: 18px; }
   }
   .modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; border: none; background: rgba(255,255,255,0.92); color: #15150F; font-size: 18px; cursor: pointer; line-height: 1; }
+
+  /* === Executive Editorial Project Detail / isolated modal styling === */
+  .overlay { padding: 12px; align-items: center; background: rgba(5,5,4,.78); backdrop-filter: blur(10px); }
+  .modal { width: min(1380px, 96vw); max-width: none; max-height: min(94dvh, 1060px); border-radius: 22px; background: var(--paper); overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--line); box-shadow: 0 35px 110px rgba(0,0,0,.5); }
+  .modal-cover { background: #101015; }
+  .modal-gallery { background: #101015; }
+  .modal-gallery img { height: clamp(360px, 57dvh, 710px); max-height: 710px; object-fit: contain; background: #101015; }
+  .gallery-count { top: 22px; left: 24px; padding: 7px 12px; font-size: 12px; }
+  .modal-close { z-index: 4; top: 22px; right: 24px; width: 44px; height: 44px; font-size: 22px; box-shadow: 0 4px 16px rgba(0,0,0,.25); }
+  .modal-body { width: 100%; max-width: none; margin: 0; padding: clamp(28px,4vw,64px) clamp(24px,5vw,78px) 72px; }
+  .modal-body .cat-row { font-size: 12px; letter-spacing: .13em; margin: 0 0 17px; }
+  .modal-body h3 { max-width: 1100px; font-size: clamp(34px,4.4vw,64px); letter-spacing: -.035em; line-height: 1.06; font-weight: 500; margin: 0 0 18px; }
+  .modal-body .co-line { font-size: 14px; letter-spacing: .045em; margin: 0 0 38px; }
+  .modal-body .desc { font-size: clamp(16px,1.5vw,19px); line-height: 1.78; max-width: 1060px; }
+  .modal-body .desc .project-summary { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 16px; padding: clamp(23px,3vw,40px); margin: 0 0 40px; }
+  .modal-body .desc .project-summary h4 { color: var(--accent); font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 17px; }
+  .modal-body .desc .project-section { padding: 30px 0 0; margin: 30px 0 0; border-top: 1px solid var(--line); }
+  .modal-body .desc .project-section:first-child { padding-top: 0; margin-top: 0; border-top: 0; }
+  .modal-body .desc .project-section h4 { color: var(--text) !important; font-family: var(--font-mono); font-size: 14px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin: 0 0 14px; }
+  .modal-body .desc .project-section p { line-height: 1.8; }
+  @media (max-width: 699px) {
+    .overlay { padding: 0; align-items: flex-end; }
+    .modal { width: 100vw; max-height: 96dvh; border-radius: 18px 18px 0 0; }
+    .modal-gallery img { height: clamp(240px, 40dvh, 440px); }
+    .modal-body { padding: 27px 22px 46px; }
+    .modal-body h3 { font-size: clamp(30px, 8vw, 43px); }
+    .modal-body .co-line { margin-bottom: 24px; }
+    .modal-body .desc .project-summary { padding: 22px; margin-bottom: 26px; }
+    .modal-body .desc .project-section { padding-top: 22px; margin-top: 22px; }
+  }
+
 </style>
 </head>
 <body>
@@ -238,9 +269,9 @@
       </div>
       <h1><span data-site="hero_headline">Creative strategy &amp; brand direction,</span> <i data-site="hero_highlight">diterjemahkan jadi visual yang bekerja di rak.</i></h1>
       <div class="hero-meta">
-        <span>Currently at <b data-site="current_company">PT Kapal Api Global</b></span>
-        <span><b data-site="experience_summary">10+ tahun</b> of Experience</span>
-        <span>Expertise: <b data-site="specialties">Packaging · POSM · Campaign</b></span>
+        <span>Saat ini di <b data-site="current_company">PT Kapal Api Global</b></span>
+        <span><b data-site="experience_summary">10+ tahun</b> pengalaman</span>
+        <span>Fokus: <b data-site="specialties">Packaging · POSM · Campaign</b></span>
       </div>
     </div>
   </div>
