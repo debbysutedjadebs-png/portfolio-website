@@ -391,6 +391,93 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
 @media(max-width:760px){.featured-intro{display:block}.featured-grid{grid-template-columns:1fr 1fr;gap:14px}.featured-detail-hero{grid-template-columns:1fr;gap:12px;padding:45px 0 28px}.featured-detail-narrative{grid-template-columns:1fr;gap:8px}.featured-art-viewer{padding:65px 12px}.featured-detail-grid{gap:10px}}
 @media(max-width:480px){.featured-grid{grid-template-columns:1fr}.featured-card-art{aspect-ratio:4/3}.featured-work{padding-top:46px}.featured-detail-grid{grid-template-columns:1fr}}
 
+
+/* V4.2 – Strategic editorial detail page; only featured detail is affected */
+.featured-detail-inner{max-width:1380px;padding:30px clamp(24px,5vw,76px) 110px}
+.featured-detail-top{position:sticky;top:0;z-index:9;background:var(--paper);padding:16px 0 20px}
+.featured-detail-hero{display:block;padding:clamp(45px,6vw,90px) 0 44px;border-bottom:1px solid var(--line)}
+.featured-detail .featured-eyebrow,.featured-micro-label{display:block;color:var(--accent);font:600 11px/1.5 var(--font-mono);letter-spacing:.14em;text-transform:uppercase}
+.featured-detail h2{max-width:1120px;font:500 clamp(38px,4.8vw,72px)/1.07 var(--font-display);letter-spacing:-.035em;margin:18px 0 44px;text-wrap:balance;overflow-wrap:break-word}
+.featured-exec-intro{display:grid;grid-template-columns:minmax(150px,230px) minmax(0,720px);gap:32px;align-items:start}
+.featured-detail-desc{max-width:68ch;margin:0;color:var(--body-soft);font-size:clamp(17px,1.55vw,20px);line-height:1.75}
+.featured-detail-narrative{display:grid;grid-template-columns:minmax(150px,230px) minmax(0,760px);align-items:start;gap:32px;border-top:0;margin-top:0;padding:56px 0;border-bottom:1px solid var(--line)}
+.featured-detail-narrative[hidden]{display:none}
+.featured-section-index h3{font:500 clamp(23px,2.3vw,30px)/1.2 var(--font-display);letter-spacing:-.02em;margin:12px 0;color:var(--text);text-transform:none}
+.featured-rich{max-width:760px;font-size:clamp(16px,1.4vw,19px);line-height:1.82}
+.featured-rich h2,.featured-rich h3{font:600 clamp(22px,2vw,28px)/1.3 var(--font-display);margin:1.5em 0 .5em;letter-spacing:-.02em}
+.featured-rich p{margin:0 0 1.2em}.featured-rich ul,.featured-rich ol{padding-left:1.5em;margin:0 0 1.4em}
+.featured-visual-section{padding-top:54px}
+.featured-visual-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:24px}
+.featured-visual-head h3{margin:10px 0 0;font:500 clamp(26px,2.7vw,38px)/1.2 var(--font-display);color:var(--text)}
+.featured-visual-count{font:12px var(--font-mono);color:var(--body-soft)}
+.featured-detail-grid{gap:24px}
+.featured-detail-image:first-child{grid-column:1/-1}
+.featured-detail-image:first-child img{width:100%;height:auto;max-height:none;object-fit:contain}
+.featured-detail-image{border-radius:12px;background:var(--paper-raised)}
+@media(max-width:800px){.featured-exec-intro,.featured-detail-narrative{grid-template-columns:1fr;gap:18px}.featured-detail h2{font-size:clamp(37px,7vw,59px);margin-bottom:32px}.featured-detail-hero{padding-top:44px}.featured-detail-narrative{padding:38px 0}}
+@media(max-width:560px){.featured-detail-inner{padding-inline:18px}.featured-detail-grid{grid-template-columns:1fr;gap:15px}.featured-visual-section{padding-top:38px}.featured-detail h2{font-size:clamp(34px,9vw,45px)}.featured-detail-desc{font-size:16px}}
+
+
+/* V4.3 — Medium-size artwork gallery; fullscreen only on click */
+.featured-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.7vw, 22px);
+  align-items: stretch;
+}
+.featured-detail-grid .featured-detail-image,
+.featured-detail-grid .featured-detail-image:first-child {
+  grid-column: auto;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0;
+  background: #24231e;
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.featured-detail-grid .featured-detail-image img,
+.featured-detail-grid .featured-detail-image:first-child img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+  transition: transform .25s ease;
+}
+.featured-detail-grid .featured-detail-image:hover img { transform: scale(1.025); }
+.featured-detail-grid .featured-detail-image::after {
+  content: '↗  VIEW FULLSCREEN';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 8px 10px;
+  background: rgba(10,10,10,.78);
+  border-radius: 20px;
+  font: 10px var(--font-mono);
+  letter-spacing: .04em;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity .2s ease,transform .2s ease;
+  pointer-events: none;
+}
+.featured-detail-grid .featured-detail-image:hover::after,
+.featured-detail-grid .featured-detail-image:focus-visible::after {opacity:1;transform:none;}
+.featured-art-viewer img {width:auto;height:auto;max-width:calc(100vw - 120px);max-height:calc(100dvh - 120px);object-fit:contain;}
+.featured-art-viewer button[hidden] {display:none;}
+@media (max-width: 900px) { .featured-detail-grid {grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (max-width: 520px) {
+ .featured-detail-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+ .featured-detail-grid .featured-detail-image {aspect-ratio: 1 / 1;}
+ .featured-art-viewer img {max-width:calc(100vw - 28px);max-height:calc(100dvh - 140px);}
+ .featured-detail-grid .featured-detail-image::after {display:none;}
+}
+@media (prefers-reduced-motion: reduce) { .featured-detail-grid .featured-detail-image img {transition:none;} }
+
 </style>
 </head>
 <body>
@@ -549,9 +636,9 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
 <div class="featured-detail" id="featuredDetail" role="dialog" aria-modal="true" aria-labelledby="featuredDetailTitle" aria-hidden="true">
   <div class="featured-detail-inner">
     <div class="featured-detail-top"><button class="featured-back" id="featuredBack" type="button">← Back to Creative Work</button><button class="featured-detail-close" id="featuredClose" type="button">Close ✕</button></div>
-    <div class="featured-detail-hero"><div><span class="featured-eyebrow" id="featuredDetailEyebrow">Creative Discipline</span><h2 id="featuredDetailTitle"></h2></div><p class="featured-detail-desc" id="featuredDetailDesc"></p></div>
-    <div class="featured-detail-grid" id="featuredDetailGrid"></div>
-    <div class="featured-detail-narrative" id="featuredDetailNarrative" hidden><h3>Creative Direction & Approach</h3><div class="featured-rich" id="featuredDetailStory"></div></div>
+    <header class="featured-detail-hero"><span class="featured-eyebrow" id="featuredDetailEyebrow">Creative Discipline</span><h2 id="featuredDetailTitle"></h2><div class="featured-exec-intro"><span class="featured-micro-label">PROJECT OVERVIEW</span><p class="featured-detail-desc" id="featuredDetailDesc"></p></div></header>
+    <section class="featured-detail-narrative" id="featuredDetailNarrative" hidden><div class="featured-section-index"><span class="featured-micro-label">01 / STRATEGIC NARRATIVE</span><h3>Creative Direction &amp; Approach</h3></div><div class="featured-rich" id="featuredDetailStory"></div></section>
+    <section class="featured-visual-section"><div class="featured-visual-head"><div><span class="featured-micro-label">02 / VISUAL EXECUTION</span><h3>Selected Artwork</h3></div><span class="featured-visual-count" id="featuredVisualCount"></span></div><div class="featured-detail-grid" id="featuredDetailGrid"></div></section>
   </div>
 </div>
 <div class="featured-art-viewer" id="featuredArtViewer" role="dialog" aria-modal="true" aria-label="Fullscreen featured artwork" aria-hidden="true">
@@ -619,6 +706,7 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
   let featuredLastFocus = null;
   let featuredGallery = [];
   let featuredArtIndex = 0;
+  let featuredArtTrigger = null;
   function featuredImageURL(value) {
     if (typeof value !== 'string' || !value.trim()) return '';
     const v = value.trim();
@@ -632,7 +720,7 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
   function closeFeaturedArt() {
     featuredArtViewer.classList.remove('open');
     featuredArtViewer.setAttribute('aria-hidden','true');
-    document.getElementById('featuredDetailGrid').querySelector('button')?.focus();
+    featuredArtTrigger?.focus();
   }
   function showFeaturedArt(index) {
     if (!featuredGallery.length) return;
@@ -644,6 +732,7 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
     document.getElementById('favNext').hidden = featuredGallery.length < 2;
   }
   function openFeaturedArt(index) {
+    featuredArtTrigger = document.activeElement;
     showFeaturedArt(index);
     featuredArtViewer.classList.add('open');
     featuredArtViewer.setAttribute('aria-hidden','false');
@@ -665,6 +754,7 @@ section { padding-top:clamp(76px,8vw,120px); padding-bottom:clamp(76px,8vw,120px
     visual.replaceChildren();
     featuredGallery = gallerySources(entry.gallery);
     if (!featuredGallery.length && featuredImageURL(entry.cover)) featuredGallery = [featuredImageURL(entry.cover)];
+    document.getElementById('featuredVisualCount').textContent = featuredGallery.length + ' artwork' + (featuredGallery.length === 1 ? '' : 's') + ' · Click an image to enlarge';
     featuredGallery.forEach((src, i) => {
       const btn = document.createElement('button'); btn.type='button'; btn.className='featured-detail-image';
       btn.setAttribute('aria-label','Open artwork '+(i+1)+' fullscreen');
