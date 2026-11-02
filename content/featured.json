@@ -96,6 +96,24 @@
         "/images/bur6.jpg",
         "/images/bur5.jpg"
       ]
+    },
+    {
+      "published": true,
+      "cover": "/images/24.jpg",
+      "title": "Visual editorial enhancement ",
+      "subtitle": "MATCHAMY — Building a Gen Z Beverage Brand",
+      "description": "Developed MATCHAMY as a youth-oriented matcha beverage brand, translating consumer accessibility and Gen Z lifestyle preferences into a distinctive brand positioning and scalable visual identity.\n\nThe strategy integrates product identity, packaging communication, and digital storytelling to establish a recognizable brand experience, balancing playful differentiation with commercial relevance in the competitive grab-and-go beverage market.",
+      "story": "**Business Challenge**\n\nBuild a distinctive matcha beverage brand capable of competing in a price-sensitive, highly visual grab-and-go market while remaining accessible and relevant to younger consumers.\n\n**Strategic Direction**\n\nPositioned MATCHAMY around affordable indulgence and everyday enjoyment, using the \"Matcha-nya Kimmy\" personality to create an approachable alternative to premium-positioned matcha brands.\n\n**Creative Leadership & Approach**\n\nDefined three creative priorities: distinctive brand recognition, consistent product presentation, and digital-first consumer engagement. Established a playful yet structured visual identity designed to support product communication, social media storytelling, and future retail applications.",
+      "gallery": [
+        "/images/matcha7.jpg",
+        "/images/matcha9.jpg",
+        "/images/matcha6.jpg",
+        "/images/matcha13.jpg",
+        "/images/matcha21.jpg",
+        "/images/matcha22.jpg",
+        "/images/matcha11.jpg",
+        "/images/matcha10.jpg"
+      ]
     }
   ]
 }
