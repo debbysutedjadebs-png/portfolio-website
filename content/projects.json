@@ -1,6 +1,22 @@
 {
   "projects": [
     {
+      "collaboration": "Design Team | Packaging Development Team | Brand Team (Marketing Team)",
+      "project_impact": "\n\n* **Easier Retrieval**\n\n  A consistent reference for locating and identifying artwork.\n* **Clearer Revisions**\n\n  More precise artwork references across review cycles.\n* **Better Governance**\n\n  Connected asset records and release checkpoints.\n\n\n\n***OUTCOMES FEELS :***\n\n## A Clearer Way to Find, Reference, and Release Artwork\n\nStandardized references simplify file identification, support more precise revision discussions, and improve visibility of current artwork records.",
+      "published": true,
+      "strategic_context": "### The Challenge\n\nManaging packaging artwork across multiple brands, variants, and formats required a more consistent approach to file identification and revision control.\n\nInconsistent naming conventions made artwork retrieval, version references, and cross-functional communication unnecessarily complex.\n\n### The Strategic Response\n\nI developed a centralized TD Code framework to establish a consistent artwork identity across the packaging development process.\n\nRather than addressing file organization alone, the system connects **asset registration, automated code issuance, revision history, and release documentation** into one structured workflow.\n\n### The Operational Shift\n\n**FROM**\nFragmented file naming and descriptive revision references.\n\n**TO**\nStandardized artwork identification, traceable revision records, and clearer release checkpoints.\n\n### The Value\n\nThe framework brings greater structure to packaging artwork management, enabling more direct file retrieval, clearer revision communication, and more consistent control from artwork development through FA release.\n\n**Beyond organizing files, the initiative establishes a scalable foundation for creative operations and packaging governance.**",
+      "scope": "Design Operations | Artwork Governance | Workflow Standardization",
+      "creative_leadership": "### My Role & Contribution\n\n**Design Operations Lead | System Initiator**\n\nIdentified an opportunity to improve artwork governance and initiated the development of a standardized TD Code system.\n\nDefined the asset identification logic, structured the workflow between TD Code Bank and Design Master, and introduced a release control process connecting artwork records with FA documentation.\n\nThe initiative reflects my approach to design leadership: **improving not only creative output, but also the systems and processes that support it.**\n\n\n\n## Making Creative Operations More Scalable\n\nA system-led initiative that strengthens operational discipline while giving the design team a more consistent foundation for managing growing packaging complexity.",
+      "role": "Design Operations Lead | System Initiator",
+      "cat": "Other",
+      "title": "Design Asset Governance & Release Control",
+      "images": [
+        "/images/structured-artwork-governance-case-study.png"
+      ],
+      "year": "2026",
+      "company": "Kapal Api Group"
+    },
+    {
       "collaboration": "Marketing & Commercial Stakeholders",
       "project_impact": "Developed a cohesive retail communication system that translated a key product benefit into consistent visual expressions across packaging and point-of-sale applications.\n\nThe project reinforced the importance of establishing communication hierarchy early in the creative process, particularly when extending a single product proposition across multiple retail environments.\n\nA key takeaway was that effective retail design requires more than visual appeal; it demands a strategic balance between brand recognition, message clarity, and shopper attention at the point of purchase.",
       "impact_summary": "Unified No Added Sugar communication across packaging and retail touchpoints.",
