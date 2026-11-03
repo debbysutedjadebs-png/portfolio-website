@@ -3,6 +3,7 @@
     {
       "collaboration": "Design Team | Packaging Development Team | Brand Team (Marketing Team)",
       "project_impact": "\n\n* **Easier Retrieval**\n\n  A consistent reference for locating and identifying artwork.\n* **Clearer Revisions**\n\n  More precise artwork references across review cycles.\n* **Better Governance**\n\n  Connected asset records and release checkpoints.\n\n\n\n***OUTCOMES FEELS :***\n\n## A Clearer Way to Find, Reference, and Release Artwork\n\nStandardized references simplify file identification, support more precise revision discussions, and improve visibility of current artwork records.",
+      "impact_summary": "Faster Artwork Retrieval | Standardized Identification | Clearer Revision Control |Stronger Release Governance",
       "published": true,
       "strategic_context": "### The Challenge\n\nManaging packaging artwork across multiple brands, variants, and formats required a more consistent approach to file identification and revision control.\n\nInconsistent naming conventions made artwork retrieval, version references, and cross-functional communication unnecessarily complex.\n\n### The Strategic Response\n\nI developed a centralized TD Code framework to establish a consistent artwork identity across the packaging development process.\n\nRather than addressing file organization alone, the system connects **asset registration, automated code issuance, revision history, and release documentation** into one structured workflow.\n\n### The Operational Shift\n\n**FROM**\nFragmented file naming and descriptive revision references.\n\n**TO**\nStandardized artwork identification, traceable revision records, and clearer release checkpoints.\n\n### The Value\n\nThe framework brings greater structure to packaging artwork management, enabling more direct file retrieval, clearer revision communication, and more consistent control from artwork development through FA release.\n\n**Beyond organizing files, the initiative establishes a scalable foundation for creative operations and packaging governance.**",
       "scope": "Design Operations | Artwork Governance | Workflow Standardization",
@@ -11,7 +12,9 @@
       "cat": "Other",
       "title": "Design Asset Governance & Release Control",
       "images": [
-        "/images/structured-artwork-governance-case-study.png"
+        "/images/design-asset-governance-workflow.png",
+        "/images/td-code-system_-automated-artwork-management.png",
+        "/images/tdcode.jpg"
       ],
       "year": "2026",
       "company": "Kapal Api Group"
